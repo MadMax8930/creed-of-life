@@ -15,6 +15,13 @@ export default {
         secondary: "#fdfafa",
         tertiary: "#f9d6d6",
       },
+      fontFamily: {
+         '1': ['Lobster', 'cursive'],
+         '2': ['Dancing Script', 'cursive'],
+         '3': ['Pacifico', 'cursive'],
+         '4': ['Playfair Display', 'serif'],
+         '5': ['Bebas Neue', 'sans-serif'],
+      },
     },
   },
   plugins: [],

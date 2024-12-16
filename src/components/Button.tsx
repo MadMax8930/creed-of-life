@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactElement } from "react";
+import { MouseEventHandler, ReactElement } from 'react';
 
 interface ButtonProps {
    title?: string;

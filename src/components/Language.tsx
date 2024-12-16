@@ -22,7 +22,7 @@ export default function LanguageSelector() {
   ];
 
   return (
-    <div className="flex lg:gap-3 sm:gap-2 gap-1">
+    <div className="flex lg:gap-3 sm:gap-2 gap-1 mt-2">
       {languages.map(({ code, flag, label }) => (
         <button
           key={code}
