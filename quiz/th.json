@@ -18,17 +18,19 @@
        ]
      }
    ],
-   "ui": {
-     "submitButton": "Submit",
-     "startOverButton": "Start Over",
-     "quizTitle": "Are you wifey material?"
-   },
    "languagesJSON": {
       "English": "อังกฤษ",
       "Spanish": "สเปน",
       "French": "ฝรั่งเศส",
       "Russian": "รัสเซีย",
       "Thai": "ไทย"
+   },
+   "uiJSON": {
+      "quizTitle": "คุณเป็นคู่ชีวิตที่ดีหรือเปล่า?",
+      "quizSubtitle": "ทำแบบทดสอบและดูคะแนนของคุณ",
+      "submitButton": "ส่ง",
+      "startOverButton": "เริ่มใหม่",
+      "footerText": "ขอบคุณที่เยี่ยมชม!"
    },
    "seoJSON": {
       "descHead": "ประเมินคำตอบของคุณและค้นหาว่าคุณเหมาะสมเป็นคู่ชีวิตหรือไม่"

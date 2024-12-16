@@ -18,17 +18,19 @@
        ]
      }
    ],
-   "ui": {
-     "submitButton": "Submit",
-     "startOverButton": "Start Over",
-     "quizTitle": "Are you wifey material?"
-   },
    "languagesJSON": {
       "English": "Inglés",
       "Spanish": "Español",
       "French": "Francés",
       "Russian": "Ruso",
       "Thai": "Tailandés"
+   },
+   "uiJSON": {
+      "quizTitle": "¿Eres material de esposa?",
+      "quizSubtitle": "Haz el quiz y descubre tu puntuación",
+      "submitButton": "Enviar",
+      "startOverButton": "Empezar de nuevo",
+      "footerText": "¡Gracias por visitarnos!"
    },
    "seoJSON": {
       "descHead": "Mide tus respuestas y descubre si eres el material para pareja ideal."

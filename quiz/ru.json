@@ -18,17 +18,19 @@
        ]
      }
    ],
-   "ui": {
-     "submitButton": "Submit",
-     "startOverButton": "Start Over",
-     "quizTitle": "Are you wifey material?"
-   },
    "languagesJSON": {
       "English": "Английский",
       "Spanish": "Испанский",
       "French": "Французский",
       "Russian": "Русский",
       "Thai": "Тайский"
+   },
+   "uiJSON": {
+      "quizTitle": "Ты подходишь для жены?",
+      "quizSubtitle": "Пройди тест и узнай свой результат",
+      "submitButton": "Отправить",
+      "startOverButton": "Начать заново",
+      "footerText": "Спасибо за посещение!"
    },
    "seoJSON": {
       "descHead": "Оцените свои ответы и узнайте, являетесь ли вы идеальным партнером."

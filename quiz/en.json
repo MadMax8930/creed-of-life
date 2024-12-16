@@ -18,17 +18,19 @@
        ]
      }
    ],
-   "ui": {
-     "submitButton": "Submit",
-     "startOverButton": "Start Over",
-     "quizTitle": "Are you wifey material?"
-   },
    "languagesJSON": {
       "English": "English",
       "Spanish": "Spanish",
       "French": "French",
       "Russian": "Russian",
       "Thai": "Thai"
+   },
+   "uiJSON": {
+      "quizTitle": "Are you wifey material?",
+      "quizSubtitle": "Take the quiz and find out your score",
+      "submitButton": "Submit",
+      "startOverButton": "Start Over",
+      "footerText": "Thank you for visiting!"
    },
    "seoJSON": {
       "descHead": "Measure your answers and find out if you're the ideal partner material."

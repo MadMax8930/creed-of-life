@@ -18,18 +18,20 @@
        ]
      }
    ],
-   "ui": {
-     "submitButton": "Submit",
-     "startOverButton": "Start Over",
-     "quizTitle": "Are you wifey material?"
-   },
    "languagesJSON": {
       "English": "Anglais",
       "Spanish": "Espagnol",
       "French": "Français",
       "Russian": "Russe",
       "Thai": "Thaïlandais"
-   }, 
+   },
+   "uiJSON": {
+      "quizTitle": "Es-tu une femme idéale ?",
+      "quizSubtitle": "Faites le quiz et découvrez votre score",
+      "submitButton": "Soumettre",
+      "startOverButton": "Recommencer",
+      "footerText": "Merci de votre visite !"
+   },
    "seoJSON": {
       "descHead": "Évaluez vos réponses et découvrez si vous êtes le partenaire idéal."
    }
