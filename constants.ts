@@ -1,0 +1,2 @@
+export const COFFEE_URL = `https://www.buymeacoffee.com/${process.env.NEXT_PUBLIC_BUYMEACOFFEE_USERNAME}`;
+export const PAYPAL_URL = `https://www.paypal.com/donate?business=${process.env.NEXT_PUBLIC_PAYPAL_MERCHANT_ID}`;

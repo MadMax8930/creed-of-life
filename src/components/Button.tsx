@@ -1,21 +1,19 @@
-"use client";
-
-import Image from "next/image";
+import { MouseEventHandler, ReactElement } from "react";
 
 interface ButtonProps {
-   title: string;
+   title?: string;
    btnType?: "button" | "submit";
    additionalStyles?: string;
    textStyles?: string;
-   rightIcon?: string;
+   btnIcon?: ReactElement
    isDisabled?: boolean;
    action?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button = ({ title, btnType, additionalStyles, textStyles, rightIcon, isDisabled, action }: ButtonProps) => {
+const Button = ({ title, btnType, additionalStyles, textStyles, btnIcon, isDisabled, action }: ButtonProps) => {
   return (
     <button 
-      disabled={false}
+      disabled={isDisabled || false}
       type={btnType || "button"}
       className={`custom-btn ${additionalStyles}`}
       onClick={action}
@@ -23,9 +21,9 @@ const Button = ({ title, btnType, additionalStyles, textStyles, rightIcon, isDis
       <span className={`flex-1 ${textStyles}`}>
          {title}
       </span>
-      {rightIcon && (
-         <div className="relative w-6 h-6">
-            <Image src={rightIcon} alt="right icon" fill className="object-contain" />
+      {btnIcon && (
+         <div className="relative w-4 h-4 pl-1">
+           {btnIcon}
          </div>
       )}
     </button>
