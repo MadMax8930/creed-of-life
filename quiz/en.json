@@ -1,0 +1,37 @@
+{
+   "questions": [
+     {
+       "question": "What is your favorite activity?",
+       "options": [
+         {
+           "text": "Cooking",
+           "score": 20,
+           "flag": "green",
+           "explanation": "Cooking is a great skill for family life!"
+         },
+         {
+           "text": "Partying",
+           "score": -10,
+           "flag": "red",
+           "explanation": "Partying too much might not align with wifey material goals."
+         }
+       ]
+     }
+   ],
+   "ui": {
+     "submitButton": "Submit",
+     "startOverButton": "Start Over",
+     "quizTitle": "Are you wifey material?"
+   },
+   "languagesJSON": {
+      "English": "English",
+      "Spanish": "Spanish",
+      "French": "French",
+      "Russian": "Russian",
+      "Thai": "Thai"
+   },
+   "seoJSON": {
+      "descHead": "Measure your answers and find out if you're the ideal partner material."
+   }
+}
+ 

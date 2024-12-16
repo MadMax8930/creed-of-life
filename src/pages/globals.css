@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.language-btn {
+   @apply flex items-center lg:justify-start justify-center gap-2 px-3 py-2 rounded bg-gray-200 hover:bg-gray-300 hover:scale-110 
+   transition-transform w-[30px] h-[40px] sm:w-[60px] sm:h-[45px] lg:w-[145px] lg:h-[50px] xl:w-[160px] xl:h-[60px] min-w-[60px]
+}
