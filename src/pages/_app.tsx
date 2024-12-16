@@ -5,8 +5,9 @@ import { NextIntlClientProvider } from 'next-intl';
 export default function MyApp({ Component, pageProps }: AppProps) {   
    return (
      <NextIntlClientProvider
-       locale={pageProps.locale} 
+       locale={pageProps.locale || 'en'} 
        messages={pageProps.quizData}
+       timeZone="Europe/Paris"
      >
        <Component {...pageProps} />
      </NextIntlClientProvider>
