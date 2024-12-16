@@ -22,5 +22,21 @@ body {
 
 .language-btn {
    @apply flex items-center lg:justify-start justify-center gap-2 px-3 py-2 rounded bg-gray-200 hover:bg-gray-300 hover:scale-110 
-   transition-transform w-[30px] h-[40px] sm:w-[60px] sm:h-[45px] lg:w-[145px] lg:h-[50px] xl:w-[160px] xl:h-[60px] min-w-[60px]
+   transition-transform w-[30px] h-[40px] sm:w-[60px] sm:h-[45px] lg:w-[145px] lg:h-[50px] xl:w-[160px] xl:h-[60px] min-w-[60px];
+}
+
+.language-text {
+   @apply text-xs lg:text-[10px] xl:text-[12px] font-bold lg:block hidden;
+}
+
+.custom-btn {
+   @apply hover:opacity-80 font-semibold outline-none rounded-md p-2.5;
+}
+
+.donation-container {
+   @apply flex justify-center items-center space-x-4;
+}
+
+.donation-btn {
+   @apply flex bg-primary text-secondary rounded px-3 py-2 hover:scale-110 md:text-[15px] text-[14px];
 }

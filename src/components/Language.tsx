@@ -40,7 +40,7 @@ export default function LanguageSelector() {
             className=""
             
           />
-          <span className="text-xs lg:text-[10px] xl:text-[12px] font-bold lg:block hidden">{label.toUpperCase()}</span>
+          <span className="language-text">{label.toUpperCase()}</span>
         </button>
       ))}
     </div>
