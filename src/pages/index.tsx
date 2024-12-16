@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import Language from '@/components/Language';
+import Donation from '@/components/Donation';
 import { GetStaticPropsContext } from 'next';
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <Layout title="Wifey Material Score">
       <div className="min-h-screen flex flex-col">
         <Language />
+        <Donation />
       </div>
     </Layout>
   );
