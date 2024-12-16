@@ -40,3 +40,17 @@ body {
 .donation-btn {
    @apply flex bg-primary text-secondary rounded px-3 py-2 hover:scale-110 md:text-[15px] text-[14px];
 }
+
+.header-cursor {
+   display: inline-block;
+   margin-left: 5px;
+   font-weight: bold;
+   animation: blink 0.8s infinite;
+ }
+ 
+ @keyframes blink {
+   50% {
+     opacity: 0;
+   }
+ }
+ 
