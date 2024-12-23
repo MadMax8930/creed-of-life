@@ -2,6 +2,7 @@ import Layout from '@/components/Layout';
 import Language from '@/components/Language';
 import Header from '@/components/Header';
 import Donation from '@/components/Donation';
+import MainHero from '@/components/MainHero';
 import { GetStaticPropsContext } from 'next';
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <div className="min-h-screen flex flex-col">
         <Language />
         <Header />
+        <MainHero />
         <Donation />
       </div>
     </Layout>

@@ -20,7 +20,7 @@ const Donation = () => {
         </Link>
       </div>
       <div className="container mx-auto text-center my-8">
-        <p className="sm:text-sm">{t('footerText')}</p>
+        <p className="sm:text-sm">{t('mainFooter')}</p>
         <p className="text-xs mt-1">
           &copy; {new Date().getFullYear()} Max Surnin. All rights reserved.
         </p>
