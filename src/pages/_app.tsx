@@ -6,7 +6,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
    return (
      <NextIntlClientProvider
        locale={pageProps.locale || 'en'} 
-       messages={pageProps.mainData}
+       messages={pageProps.jsonData}
        timeZone="Europe/Paris"
      >
        <Component {...pageProps} />
