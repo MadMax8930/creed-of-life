@@ -1,53 +1,99 @@
-import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import { useState } from 'react';
+import { Branch, Pillar, Content } from '@/types/mongo';
 
-const MainHero = () => {
-  const sceneRef = useRef<HTMLDivElement>(null);
+interface MainHeroProps {
+  pillars: Pillar[];
+  locale: string; // Accepting the locale prop to render dynamic translations
+}
 
-  useEffect(() => {
-    if (!sceneRef.current) return;
+const MainHero = ({ pillars, locale }: MainHeroProps) => {
+  // State to track selected pillar and branch
+  const [selectedPillar, setSelectedPillar] = useState<Pillar | null>(null);
+  const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
 
-    // Create the scene, camera, and renderer
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    sceneRef.current.appendChild(renderer.domElement);
+  // Handle pillar click
+  const handlePillarClick = (pillar: Pillar) => {
+    if (selectedPillar === pillar) {
+      setSelectedPillar(null); // Collapse if already selected
+    } else {
+      setSelectedPillar(pillar); // Select the clicked pillar
+      setSelectedBranch(null); // Reset selected branch when changing pillar
+    }
+  };
 
-    // Create a cube geometry
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+  // Handle branch click
+  const handleBranchClick = (branch: Branch) => {
+    if (selectedBranch === branch) {
+      setSelectedBranch(null); // Collapse if already selected
+    } else {
+      setSelectedBranch(branch); // Select the clicked branch
+    }
+  };
 
-    // Position the camera
-    camera.position.z = 5;
-
-    // Animation loop
-    const animate = () => {
-      requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-      renderer.render(scene, camera);
-    };
-
-    animate();
-
-    // Handle window resize
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      renderer.dispose();
-    };
-  }, []);
-
-  return <div ref={sceneRef} style={{ width: "100%", height: "100vh" }} />;
+  return (
+    <section className="p-6">
+      <h1 className="text-4xl font-bold text-center mb-8">Our Core Pillars</h1>
+      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {pillars.slice(0, 3).map((pillar) => (
+          <div
+            key={pillar._id}
+            className="p-4 bg-white rounded-lg shadow-md cursor-pointer"
+            onClick={() => handlePillarClick(pillar)}
+          >
+            <h2 className="text-2xl font-semibold text-gray-800">
+              {/* Display the pillar name */}
+              {pillar.translations && pillar.translations[locale]?.name
+                ? pillar.translations[locale]?.name
+                : pillar.translations?.en?.name || pillar.name}
+            </h2>
+            {/* Show branches if the pillar is selected */}
+            {selectedPillar === pillar && (
+              <ul className="mt-4 space-y-2">
+                {pillar.branches.map((branch) => (
+                  <li
+                    key={branch._id}
+                    className="p-2 bg-gray-100 rounded-md cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent pillar click event from firing
+                      handleBranchClick(branch);
+                    }}
+                  >
+                    <h3 className="text-xl font-medium text-blue-600">
+                      {/* Display branch name based on locale */}
+                      {branch.translations && branch.translations[locale]?.name
+                        ? branch.translations[locale]?.name
+                        : branch.translations?.en?.name || branch.name}
+                    </h3>
+                    {/* Show contentItems if the branch is selected */}
+                    {selectedBranch === branch && (
+                      <div className="mt-2 space-y-2">
+                        {branch.contentItems.map((content: Content) => (
+                          <div key={content._id} className="p-2 bg-gray-50 rounded-md">
+                            <h4 className="text-lg font-medium text-gray-900">
+                              {/* Display content title based on locale */}
+                              {content.translations && content.translations[locale]?.title
+                                ? content.translations[locale]?.title
+                                : content.translations?.en?.title || 'No Title Available'}
+                            </h4>
+                            <p className="text-gray-600">
+                              {/* Display content text based on locale */}
+                              {content.translations && content.translations[locale]?.text
+                                ? content.translations[locale]?.text
+                                : content.translations?.en?.text || 'No Description Available'}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default MainHero;
