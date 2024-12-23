@@ -41,8 +41,8 @@ const TypingEffect = ({ textKey, style }: { textKey: string; style: string }) =>
 const Header = () => {
   return (
     <div className="flex flex-col items-center justify-center mt-8 space-y-1 w-full">
-      <TypingEffect textKey="quizTitle" style="font-1 sm:text-2xl text-lg" />
-      <TypingEffect textKey="quizSubtitle" style="font-2 sm:text-xl text-lg" />
+      <TypingEffect textKey="mainTitle" style="font-1 sm:text-2xl text-lg" />
+      <TypingEffect textKey="mainSubtitle" style="font-2 sm:text-xl text-lg" />
     </div>
   );
 };

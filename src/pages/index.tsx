@@ -7,7 +7,7 @@ import { GetStaticPropsContext } from 'next';
 export default function Home() {
 
   return (
-    <Layout title="Wifey Material Score">
+    <Layout title="Creed Of Live 101">
       <div className="min-h-screen flex flex-col">
         <Language />
         <Header />
@@ -19,11 +19,11 @@ export default function Home() {
 
 export async function getStaticProps({locale}: GetStaticPropsContext) {
    // Dynamically load the JSON file based on the selected locale
-   const quizData = (await import(`../../quiz/${locale}.json`)).default;
+   const mainData = (await import(`../../locales/${locale}.json`)).default;
    
    return {
      props: {
-       quizData,
+       mainData,
        locale,
      },
    };

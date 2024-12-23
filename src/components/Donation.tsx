@@ -10,7 +10,7 @@ const Donation = () => {
 
   return (
     <div className="mt-12 pt-6 text-center w-full">
-      <p className="mb-2 text-sm font-light">If you enjoyed this quiz, consider supporting us:</p>
+      <p className="mb-2 text-sm font-light">If you enjoyed this guide, consider supporting us:</p>
       <div className="donation-container">
         <Link href={PAYPAL_URL} passHref target="_blank" rel="noopener noreferrer">
           <Button title="Donate via PayPal" btnIcon={<FaPaypal size={18} />} additionalStyles="donation-btn hover:bg-blue-500" />
