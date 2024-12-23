@@ -1,14 +1,34 @@
 export interface Translation {
-   title: string;
-   text: string;
+   [key: string]: {
+      title: string;
+      text: string;
+   };
+   en: {
+      title: string;
+      text: string;
+    };
+   es: {
+      title: string;
+      text: string;
+   };
+   fr: {
+      title: string;
+      text: string;
+   };
+   ru: {
+      title: string;
+      text: string;
+   };
+   th: {
+      title: string;
+      text: string;
+   };
 }
  
 export interface Content {
    _id: string;
    branch: string;
-   translations: {
-     [key: string]: Translation; // Keys are locale codes like 'en', 'es', etc.
-   };
+   translations:  Translation; // Keys are locale codes like 'en', 'es', etc.
 }
  
 export interface Branch {

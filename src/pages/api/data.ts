@@ -65,7 +65,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
          ...branch,
          contentItems: branch.contentItems.map((content) => ({
            ...content,
-           translations: content.translations[locale] || content.translations.en, // Default to English if translation not found
+           translations: content.translations,
          })),
       })),
     }));

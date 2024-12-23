@@ -7,6 +7,7 @@ interface MainHeroProps {
 }
 
 const MainHero = ({ pillars, locale }: MainHeroProps) => {
+   console.log('Received Pillars Data:', pillars);
   // State to track selected pillar and branch
   const [selectedPillar, setSelectedPillar] = useState<Pillar | null>(null);
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
@@ -41,10 +42,7 @@ const MainHero = ({ pillars, locale }: MainHeroProps) => {
             onClick={() => handlePillarClick(pillar)}
           >
             <h2 className="text-2xl font-semibold text-gray-800">
-              {/* Display the pillar name */}
-              {pillar.translations && pillar.translations[locale]?.name
-                ? pillar.translations[locale]?.name
-                : pillar.translations?.en?.name || pillar.name}
+              {pillar.name} {/* Display the pillar name directly */}
             </h2>
             {/* Show branches if the pillar is selected */}
             {selectedPillar === pillar && (
@@ -59,10 +57,7 @@ const MainHero = ({ pillars, locale }: MainHeroProps) => {
                     }}
                   >
                     <h3 className="text-xl font-medium text-blue-600">
-                      {/* Display branch name based on locale */}
-                      {branch.translations && branch.translations[locale]?.name
-                        ? branch.translations[locale]?.name
-                        : branch.translations?.en?.name || branch.name}
+                      {branch.name} {/* Display the branch name directly */}
                     </h3>
                     {/* Show contentItems if the branch is selected */}
                     {selectedBranch === branch && (
@@ -71,15 +66,11 @@ const MainHero = ({ pillars, locale }: MainHeroProps) => {
                           <div key={content._id} className="p-2 bg-gray-50 rounded-md">
                             <h4 className="text-lg font-medium text-gray-900">
                               {/* Display content title based on locale */}
-                              {content.translations && content.translations[locale]?.title
-                                ? content.translations[locale]?.title
-                                : content.translations?.en?.title || 'No Title Available'}
+                              {content.translations[locale]?.title || content.translations.en?.title || 'No Title Available'}
                             </h4>
                             <p className="text-gray-600">
                               {/* Display content text based on locale */}
-                              {content.translations && content.translations[locale]?.text
-                                ? content.translations[locale]?.text
-                                : content.translations?.en?.text || 'No Description Available'}
+                              {content.translations[locale]?.text || content.translations.en?.text || 'No Text Available'}
                             </p>
                           </div>
                         ))}
