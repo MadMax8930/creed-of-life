@@ -1,0 +1,18 @@
+{
+   "languagesJSON": {
+      "English": "English",
+      "Spanish": "Spanish",
+      "French": "French",
+      "Russian": "Russian",
+      "Thai": "Thai"
+   },
+   "uiJSON": {
+      "mainTitle": "Creed of Life 101",
+      "mainSubtitle": "Unlock Growth Through Confidence, Discipline, and Adaptability",
+      "mainButton": "Explore in Depth",
+      "mainFooter": "Thank you for visiting! May your journey be filled with strength, clarity, and transformation."
+   },
+   "seoJSON": {
+      "descHead": "A Practical Guide to Confidence, Purpose, and Lifelong Growth"
+   }
+}

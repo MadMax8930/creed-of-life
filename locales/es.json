@@ -1,0 +1,18 @@
+{
+   "languagesJSON": {
+      "English": "Inglés",
+      "Spanish": "Español",
+      "French": "Francés",
+      "Russian": "Ruso",
+      "Thai": "Tailandés"
+   },
+   "uiJSON": {
+      "mainTitle": "Creed de la Vida 101",
+      "mainSubtitle": "Descubre el crecimiento a través de la confianza, la disciplina y la adaptabilidad",
+      "mainButton": "Explorar en Profundidad",
+      "mainFooter": "¡Gracias por visitarnos! Que tu viaje esté lleno de fuerza, claridad y transformación."
+   },
+   "seoJSON": {
+      "descHead": "Una guía práctica para la confianza, el propósito y el crecimiento personal"
+   }
+}

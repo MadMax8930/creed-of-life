@@ -1,0 +1,13 @@
+{
+	"folders": [
+      {
+         "name": "wifey-material",
+         "path": ".."
+      },
+      {
+         "name": "locales",
+         "path": "../../../react/creed-of-life/public/locales"
+      }
+   ],
+   "settings": {}
+}

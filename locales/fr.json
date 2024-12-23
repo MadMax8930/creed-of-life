@@ -1,0 +1,18 @@
+{
+   "languagesJSON": {
+      "English": "Anglais",
+      "Spanish": "Espagnol",
+      "French": "Français",
+      "Russian": "Russe",
+      "Thai": "Thaïlandais"
+   },
+   "uiJSON": {
+      "mainTitle": "Crédo de Vie 101",
+      "mainSubtitle": "Libérez la croissance grâce à la confiance, la discipline et l'adaptabilité",
+      "mainButton": "Explorer en Profondeur",
+      "mainFooter": "Merci de votre visite ! Que votre voyage soit rempli de force, de clarté et de transformation."
+   },
+   "seoJSON": {
+      "descHead": "Un guide pratique pour la confiance, le but et une croissance durable"
+   }
+}
