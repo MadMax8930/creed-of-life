@@ -48,11 +48,10 @@ body {
    margin-left: 5px;
    font-weight: bold;
    animation: blink 0.8s infinite;
- }
+}
  
- @keyframes blink {
+@keyframes blink {
    50% {
      opacity: 0;
    }
- }
- 
+}
