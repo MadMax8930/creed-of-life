@@ -16,9 +16,20 @@
       "descHead": "Практическое руководство по уверенности, цели и постоянному развитию"
    },
    "pillarsJSON": {
-      "confidence": "Уверенность в себе",
-      "discipline": "Дисциплина",
-      "adaptability": "Адаптивность"
+      "Confidence in Oneself": "Уверенность в себе",
+      "Discipline": "Дисциплина",
+      "Adaptability": "Адаптивность"
+   },
+   "branchesJSON": {
+      "Self-Awareness": "Самосознание",
+      "Resilience": "Устойчивость",
+      "Action": "Действие",
+      "Behavior": "Поведение",
+      "Mind": "Разум",
+      "Upgrade": "Обновление",
+      "Flexibility": "Гибкость",
+      "Learning Mindset": "Мышление на основе обучения",
+      "Emotional Balance": "Эмоциональный баланс"
    },
    "endingJSON": {
       "concTitle": "Заключение",

@@ -16,9 +16,20 @@
       "descHead": "Un guide pratique pour la confiance, le but et une croissance durable"
    },
    "pillarsJSON": {
-      "confidence": "Confiance en soi",
-      "discipline": "Discipline",
-      "adaptability": "Adaptabilité"
+      "Confidence in Oneself": "Confiance en soi",
+      "Discipline": "Discipline",
+      "Adaptability": "Adaptabilité"
+   },
+   "branchesJSON": {
+      "Self-Awareness": "Conscience de soi",
+      "Resilience": "Résilience",
+      "Action": "Action",
+      "Behavior": "Comportement",
+      "Mind": "Esprit",
+      "Upgrade": "Amélioration",
+      "Flexibility": "Flexibilité",
+      "Learning Mindset": "Mentalité d'apprentissage",
+      "Emotional Balance": "Équilibre émotionnel"
    },
    "endingJSON": {
       "concTitle": "Conclusion",

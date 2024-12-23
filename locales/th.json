@@ -16,9 +16,20 @@
       "descHead": "คู่มือปฏิบัติสำหรับความมั่นใจ จุดมุ่งหมาย และการเติบโตตลอดชีวิต"
    },
    "pillarsJSON": {
-      "confidence": "ความมั่นใจในตัวเอง",
-      "discipline": "วินัย",
-      "adaptability": "ความสามารถในการปรับตัว"
+      "Confidence in Oneself": "ความมั่นใจในตัวเอง",
+      "Discipline": "วินัย",
+      "Adaptability": "ความสามารถในการปรับตัว"
+   },
+   "branchesJSON": {
+      "Self-Awareness": "ความตระหนักรู้ในตนเอง",
+      "Resilience": "ความยืดหยุ่น",
+      "Action": "การกระทำ",
+      "Behavior": "พฤติกรรม",
+      "Mind": "จิตใจ",
+      "Upgrade": "การอัปเกรด",
+      "Flexibility": "ความยืดหยุ่น",
+      "Learning Mindset": "แนวคิดการเรียนรู้",
+      "Emotional Balance": "ความสมดุลทางอารมณ์"
    },
    "endingJSON": {
       "concTitle": "บทสรุป",

@@ -16,9 +16,20 @@
       "descHead": "A Practical Guide to Confidence, Purpose, and Lifelong Growth"
    },
    "pillarsJSON": {
-      "confidence": "Confidence",
-      "discipline": "Discipline",
-      "adaptability": "Adaptability"
+      "Confidence in Oneself": "Confidence in Oneself",
+      "Discipline": "Discipline",
+      "Adaptability": "Adaptability"
+   }, 
+   "branchesJSON": {
+      "Self-Awareness": "Self-Awareness",
+      "Resilience": "Resilience",
+      "Action": "Action",
+      "Behavior": "Behavior",
+      "Mind": "Mind",
+      "Upgrade": "Upgrade",
+      "Flexibility": "Flexibility",
+      "Learning Mindset": "Learning Mindset",
+      "Emotional Balance": "Emotional Balance"
    },
    "endingJSON": {
       "concTitle": "Conclusion",

@@ -16,9 +16,20 @@
       "descHead": "Una guía práctica para la confianza, el propósito y el crecimiento personal"
    },
    "pillarsJSON": {
-      "confidence": "Confianza en uno mismo",
-      "discipline": "Disciplina",
-      "adaptability": "Adaptabilidad"
+      "Confidence in Oneself": "Confianza en Uno Mismo",
+      "Discipline": "Disciplina",
+      "Adaptability": "Adaptabilidad"
+   },
+   "branchesJSON": {
+      "Self-Awareness": "Autoconciencia",
+      "Resilience": "Resiliencia",
+      "Action": "Acción",
+      "Behavior": "Comportamiento",
+      "Mind": "Mente",
+      "Upgrade": "Mejora",
+      "Flexibility": "Flexibilidad",
+      "Learning Mindset": "Mentalidad de Aprendizaje",
+      "Emotional Balance": "Equilibrio Emocional"
    },
    "endingJSON": {
       "concTitle": "Conclusión",
