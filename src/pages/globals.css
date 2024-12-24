@@ -44,9 +44,7 @@ body {
 }
 
 .header-cursor {
-   display: inline-block;
-   margin-left: 5px;
-   font-weight: bold;
+   @apply inline-block ml-[5px] font-bold;
    animation: blink 0.8s infinite;
 }
  

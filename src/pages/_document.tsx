@@ -7,21 +7,21 @@ export default function Document() {
       {/* Meta tags for SEO */}
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="Take this fun quiz to see if you're wifey material! Answer questions, learn the correct choices, and share your score!" />
-      <meta name="keywords" content="quiz, wifey material, fun quiz, relationship quiz, personality test" />
+      <meta name="description" content="Creed of Life: A journey of personal growth, embracing confidence, discipline, and adaptability to create a life of purpose, meaning, and transformation." />
+      <meta name="keywords" content="Creed of Life, personal growth, confidence, discipline, adaptability, self-awareness, resilience, action, behavior, emotional balance, self-improvement, guide, philosophy, psychology, deep thoughts, meaning of life, how to get better" />
       <meta name="author" content="Max Surnin" />
 
       {/* Social Media Open Graph */}
-      <meta property="og:title" content="Are You Wifey Material? | Fun Personality Quiz" />
-      <meta property="og:description" content="A fun quiz to see how much you're 'wifey material'! Answer questions and get your score!" />
-      <meta property="og:image" content="/images/og-image.png" />
-      <meta property="og:url" content="https://wifeymaterialscore.com" />
+      <meta property="og:title" content="Creed of Life: Embrace Your Personal Growth Journey" />
+      <meta property="og:description" content="Creed of Life is a path to developing self-confidence, discipline, and adaptability. Transform your life by embracing growth with integrity and authenticity." />
       <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://creedoflife.com" />
+      <meta property="og:image" content="/images/og-image.png" />
 
       {/* Twitter Card Meta */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Are You Wifey Material? | Fun Personality Quiz" />
-      <meta name="twitter:description" content="Find out if you're wifey material with this fun personality quiz!" />
+      <meta name="twitter:title" content="Creed of Life: Embrace Your Personal Growth Journey" />
+      <meta name="twitter:description" content="Creed of Life is a path to developing self-confidence, discipline, and adaptability. Transform your life by embracing growth with integrity and authenticity." />
       <meta name="twitter:image" content="/images/twitter-image.png" />
 
       {/* Favicon */}

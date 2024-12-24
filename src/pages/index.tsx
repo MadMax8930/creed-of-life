@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout';
 import Language from '@/components/Language';
-import Header from '@/components/Header';
+import Introduction from '@/components/Introduction';
 import Donation from '@/components/Donation';
 import MainHero from '@/components/MainHero';
 import Conclusion from '@/components/Conclusion';
@@ -14,7 +14,7 @@ export default function Home({ dbData, locale }: { dbData: DbData, locale: strin
     <Layout title="Creed Of Live 101">
       <div className="min-h-screen flex flex-col">
         <Language />
-        <Header />
+        <Introduction />
         <MainHero pillars={dbData.pillars} locale={locale} />
         <Conclusion />
         <Donation />
