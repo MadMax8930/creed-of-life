@@ -2,7 +2,8 @@ import Layout from '@/components/Layout';
 import Language from '@/components/Language';
 import Introduction from '@/components/Introduction';
 import Donation from '@/components/Donation';
-import MainHero from '@/components/MainHero';
+import MainView from '@/components/MainView';
+// import WDisplay from '@/components/WDisplay';  // for v2
 import Conclusion from '@/components/Conclusion';
 import { GetStaticPropsContext } from 'next';
 import { DbData } from '@/types/mongo';
@@ -15,7 +16,8 @@ export default function Home({ dbData, locale }: { dbData: DbData, locale: strin
       <div className="min-h-screen flex flex-col">
         <Language />
         <Introduction />
-        <MainHero pillars={dbData.pillars} locale={locale} />
+        <MainView pillars={dbData.pillars} locale={locale} />
+        {/* <WDisplay pillars={dbData.pillars} locale={locale} /> */}
         <Conclusion />
         <Donation />
       </div>
