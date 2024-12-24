@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Button from '@/components/Button';
 import { FaPaypal } from 'react-icons/fa';
 import { SiBuymeacoffee } from 'react-icons/si';
-import { PAYPAL_URL, COFFEE_URL } from '@/../constants'
+import { PAYPAL_URL, COFFEE_URL } from '@/types/constants'
 import { useTranslations } from 'next-intl';
 
 const Donation = () => {

@@ -49,4 +49,9 @@ export interface Pillar {
 export interface DbData {
    pillars: Pillar[];
 }
+
+export interface MainHeroProps {
+   pillars: Pillar[];
+   locale: string; // Locale for translations
+}
  
