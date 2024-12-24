@@ -27,6 +27,9 @@ export default {
          '9': ['Fjalla One', 'sans-serif'],
          '10': ['Archivo Black', 'sans-serif'],
       },
+      backgroundImage: {
+         'hero-pattern': "url('/images/herobg.jpg')",
+      },
     },
   },
   plugins: [],
