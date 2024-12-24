@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&family=Lobster&family=Pacifico&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&family=Lobster&family=Pacifico&family=Playfair+Display&family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;600&family=Crimson+Pro:wght@400;600&family=Lora:wght@400;700&family=Impact&family=Archivo+Black&family=Fjalla+One&family=Playfair+Display:wght@700&family=Raleway:wght@700&family=Rockwell:wght@700&family=Anton&family=Bitter:wght@700&family=Oswald:wght@700&family=Montserrat:wght@700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -33,6 +33,18 @@ body {
 
 .language-text {
    @apply text-xs lg:text-[10px] xl:text-[12px] font-bold lg:block hidden;
+}
+
+.intro-container {
+   @apply flex flex-col items-center justify-center mt-8 space-y-1 w-full;
+}
+
+.main-title {
+   @apply font-1 sm:text-2xl text-lg;
+}
+
+.main-subtitle {
+   @apply font-2 sm:text-xl text-lg;
 }
 
 .custom-btn {
