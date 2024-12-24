@@ -50,7 +50,7 @@ export interface DbData {
    pillars: Pillar[];
 }
 
-export interface MainHeroProps {
+export interface HeroProps {
    pillars: Pillar[];
    locale: string; // Locale for translations
 }
