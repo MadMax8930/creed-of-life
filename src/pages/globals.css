@@ -51,12 +51,28 @@ body {
    @apply hover:opacity-80 font-semibold outline-none rounded-md p-2.5;
 }
 
+.donation-text {
+   @apply mb-2 sm:text-[10.5px] text-[9.5px] font-2;
+}
+
 .donation-container {
    @apply flex justify-center items-center space-x-4;
 }
 
 .donation-btn {
-   @apply flex bg-primary text-secondary rounded px-3 py-2 hover:scale-110 md:text-[15px] text-[14px];
+   @apply flex bg-primary text-secondary rounded px-3 py-2 hover:scale-110 md:text-[12.5px] text-[11px];
+}
+
+.footer-container {
+   @apply container mx-auto text-center px-4;
+}
+
+.footer-light {
+   @apply sm:text-[10.5px] text-[9.5px] sm:mt-8 mt-6 font-2;
+}
+
+.footer-bold {
+   @apply sm:text-[12px] text-[11px] sm:mt-2 mt-4 font-5;
 }
 
 .header-cursor {
