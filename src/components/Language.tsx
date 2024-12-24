@@ -22,7 +22,7 @@ export default function LanguageSelector() {
   ];
 
   return (
-    <div className="flex lg:gap-3 sm:gap-2 gap-1 mt-2">
+    <div className="language-container">
       {languages.map(({ code, flag, label }) => (
         <button
           key={code}
@@ -31,15 +31,7 @@ export default function LanguageSelector() {
           title={label}
           className="language-btn"
         >
-          <Image
-            src={flag}
-            alt={label}
-            width={36}
-            height={16}
-            quality={100}
-            className=""
-            
-          />
+          <Image src={flag} alt={label} width={36} height={16} quality={100} />
           <span className="language-text">{label.toUpperCase()}</span>
         </button>
       ))}
