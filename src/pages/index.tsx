@@ -13,12 +13,19 @@ export default function Home({ dbData, locale }: { dbData: DbData, locale: strin
 
   return (
     <Layout title="Creed Of Live 101">
-      <div className="min-h-screen flex flex-col">
+      <div className='min-h-screen flex flex-col'>
         <Language />
         <Introduction />
-        <MainView pillars={dbData.pillars} locale={locale} />
-        {/* <WDisplay pillars={dbData.pillars} locale={locale} /> */}
-        <Conclusion />
+        <div className='relative pb-12'>
+           {/* Background Image Layer */}
+           <div className='absolute inset-0 bg-hero-pattern bg-cover bg-center opacity-30 xs:rounded-lg rounded-none' />
+           {/* Main Content Layer */}
+           <div className='flex-1 relative z-10'>
+             <MainView pillars={dbData.pillars} locale={locale} />
+             {/* <WDisplay pillars={dbData.pillars} locale={locale} /> */}
+           </div>
+         </div>
+         <Conclusion />
         <Donation />
       </div>
     </Layout>

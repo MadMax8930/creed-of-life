@@ -11,9 +11,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "#2B2C35",
+        primary: "#f3f4f6",
         secondary: "#fdfafa",
-        tertiary: "#f9d6d6",
+        tertiary: "#2B2C35",
       },
       fontFamily: {
          '1': ['Montserrat', 'sans-serif'],
@@ -29,6 +29,9 @@ export default {
       },
       backgroundImage: {
          'hero-pattern': "url('/images/herobg.jpg')",
+      },
+      screens: {
+         xs: "500px",
       },
     },
   },

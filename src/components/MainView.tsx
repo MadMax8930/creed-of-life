@@ -31,7 +31,7 @@ const MainView = ({ pillars, locale }: HeroProps) => {
   };
 
   return (
-    <section className="pt-12 px-4 sm:px-6 md:px-8 lg:px-16 bg-gradient-to-r from-blue-200 via-blue-100 to-white">
+    <section className="pt-12 px-4 sm:px-6 md:px-8 lg:px-16">
       {/* Pillar cards displayed as buttons */}
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {pillars.map((pillar) => (

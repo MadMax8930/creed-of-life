@@ -36,15 +36,19 @@ body {
 }
 
 .intro-container {
-   @apply flex flex-col items-center justify-center mt-8 px-8 space-y-1 w-full;
+   @apply flex flex-col items-center justify-center w-full;
+}
+
+.intro-text-wrapper {
+   @apply flex flex-col space-y-1 w-full text-center min-h-[6rem] pt-4 sm:mb-0 mb-2 px-6;
 }
 
 .main-title {
-   @apply font-1 sm:text-2xl text-lg;
+   @apply font-8 sm:text-2xl text-lg;
 }
 
 .main-subtitle {
-   @apply font-2 sm:text-xl text-base;
+   @apply font-2 sm:text-base text-sm;
 }
 
 .custom-btn {
@@ -58,13 +62,12 @@ body {
 .donation-container {
    @apply flex justify-center items-center space-x-4;
 }
-
 .donation-btn {
-   @apply flex bg-primary text-secondary rounded px-3 py-2 hover:scale-110 md:text-[12.5px] text-[11px];
+   @apply flex bg-tertiary text-secondary rounded px-3 py-2 hover:scale-110 md:text-[12.5px] text-[11px];
 }
 
 .footer-container {
-   @apply container mx-auto text-center px-4;
+   @apply container mx-auto text-center px-4 border-gray-600 border-t-[0.5px] sm:mt-8 mt-6;
 }
 
 .footer-light {
@@ -72,7 +75,7 @@ body {
 }
 
 .footer-bold {
-   @apply sm:text-[12px] text-[11px] sm:mt-2 mt-4 font-5;
+   @apply sm:text-[11.5px] text-[10.5px] sm:mt-2 mt-4 font-2 font-bold;
 }
 
 .header-cursor {

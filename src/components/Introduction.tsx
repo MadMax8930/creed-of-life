@@ -41,8 +41,10 @@ const TypingEffect = ({ textKey, style }: { textKey: string; style: string }) =>
 const Introduction = () => {
   return (
     <div className="intro-container">
+      <div className="intro-text-wrapper">
       <TypingEffect textKey="mainTitle" style="main-title" />
       <TypingEffect textKey="mainSubtitle" style="main-subtitle" />
+      </div>
     </div>
   );
 };
