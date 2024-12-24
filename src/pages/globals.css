@@ -36,7 +36,7 @@ body {
 }
 
 .intro-container {
-   @apply flex flex-col items-center justify-center mt-8 space-y-1 w-full;
+   @apply flex flex-col items-center justify-center mt-8 px-8 space-y-1 w-full;
 }
 
 .main-title {
@@ -44,7 +44,7 @@ body {
 }
 
 .main-subtitle {
-   @apply font-2 sm:text-xl text-lg;
+   @apply font-2 sm:text-xl text-base;
 }
 
 .custom-btn {
