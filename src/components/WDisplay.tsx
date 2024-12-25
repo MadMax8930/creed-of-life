@@ -4,6 +4,7 @@ import MainView from '@/components/MainView';
 import TreeView from '@/components/TreeView';
 import Button from '@/components/Button';
 
+// for V2
 const WDisplay = ({ pillars, locale }: HeroProps) => {
    
   const [isChartView, setIsChartView] = useState(false);

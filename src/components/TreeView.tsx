@@ -4,6 +4,7 @@ import { Pillar, Branch, Content, HeroProps } from '@/types/mongo';
 import { useTranslations } from 'next-intl';
 import 'reactflow/dist/style.css';
 
+// for V2
 const TreeView = ({ pillars, locale }: HeroProps) => {
   const pT = useTranslations('pillarsJSON'); // Pillar translations
   const bT = useTranslations('branchesJSON'); // Branch translations
