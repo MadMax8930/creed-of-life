@@ -38,8 +38,10 @@ export async function getStaticProps({locale}: GetStaticPropsContext) {
 
    // Fetch MongoDB data from an API endpoint
    let dbData: DbData = { pillars: [] }; // Default fallback in case the API fails
+   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'; // .env
+
    try {
-     const response = await axios.get<DbData>(`${process.env.NEXT_PUBLIC_API_URL}/api/data?locale=${locale}`);
+     const response = await axios.get<DbData>(`${apiUrl}/api/data?locale=${locale}`);
      dbData = response.data;
    } catch (error) {
      console.error('Error fetching MongoDB data:', error);
