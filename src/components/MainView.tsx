@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Pillar, Branch, Content, HeroProps } from '@/types/mongo';
+import { backgroundStyles, gradientStyles } from '@/types/constants';
 import { useTranslations } from 'next-intl';
 import Button from '@/components/Button';
 
@@ -51,16 +52,28 @@ const MainView = ({ pillars, locale }: HeroProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Helper function to get the gradient style for the selected pillar
+  const getGradientForPillar = (pillar: Pillar) => {
+    const pillarIndex = pillars.findIndex((p) => p._id === pillar._id);
+    return gradientStyles[pillarIndex];
+  };
+
   return (
-    <section className="pt-12 px-4 sm:px-6 md:px-8 lg:px-16">
+    <section className="pt-12 px-5 xs:px-6 sm:px-8 lg:px-12 xl:px-16">
       {/* Pillar cards displayed as buttons */}
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {pillars.map((pillar) => (
+      <div className="grid 2xl:gap-8 lg:gap-6 sm:gap-4 xs:gap-3 gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {pillars.map((pillar, index) => (
           <Button
             key={pillar._id}
             title={pT(pillar.name) || pillar.name}
-            additionalStyles={`p-6 rounded-lg shadow-lg transition transform 
-              ${selectedPillar === pillar ? 'bg-blue-500 text-white' : 'bg-white'}`}
+            additionalStyles={`
+               relative p-6 sm:min-h-24 min-h-20 rounded-lg shadow-md transition transform text-white
+               ${backgroundStyles[index]}
+               ${selectedPillar === pillar 
+                  ? 'scale-105 shadow-xl opacity-100 border-2 border-secondary' 
+                  : selectedPillar === null
+                  ? 'opacity-100 hover:scale-105 hover:shadow-lg'
+                  : 'opacity-60 hover:scale-105 hover:shadow-md'}`}
             action={() => handlePillarClick(pillar)}
           />
         ))}
@@ -68,13 +81,16 @@ const MainView = ({ pillars, locale }: HeroProps) => {
 
       {/* Display branches in a separate panel */}
       {selectedPillar && (
-        <div className="mt-8 space-y-4">
+        <div className="sm:mt-4 mt-6 sm:space-y-3 space-y-2">
           {selectedPillar.branches.map((branch) => (
             <Button
               key={branch._id}
               title={bT(branch.name) || branch.name}
-              additionalStyles={`p-4 rounded-md shadow-md transition w-full
-                ${selectedBranch === branch ? 'bg-teal-400 text-white' : 'bg-teal-100'}`}
+              additionalStyles={`
+                 p-4 rounded-md shadow-md transition w-full font-8 sm:min-h-14 min-h-16
+                 ${selectedBranch === branch ? `${getGradientForPillar(selectedPillar)} text-white` : 'bg-white text-black'}
+                 
+              `}
               action={(e) => {
                 e.stopPropagation(); // Prevent pillar click event from firing
                 handleBranchClick(branch);
