@@ -95,7 +95,7 @@ const MainView = ({ pillars, locale }: HeroProps) => {
               key={branch._id}
               title={bT(branch.name) || branch.name}
               additionalStyles={`
-                 p-4 rounded-md shadow-md transition w-full font-8 sm:min-h-14 min-h-16
+                 p-4 rounded-md shadow-md transition w-full font-third sm:min-h-14 min-h-16
                  ${selectedBranch === branch ? `${getGradientForPillar(selectedPillar)} text-white` : 'bg-white text-black'}
                  
               `}

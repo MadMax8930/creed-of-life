@@ -44,11 +44,11 @@ body {
 }
 
 .main-title {
-   @apply font-8 sm:text-2xl text-lg;
+   @apply font-third sm:text-2xl text-lg;
 }
 
 .main-subtitle {
-   @apply font-2 sm:text-base text-sm text-gray-700 leading-relaxed;
+   @apply sm:text-base text-sm text-gray-700 font-first leading-relaxed;
 }
 
 .intro-bloc-wrapper {
@@ -56,7 +56,7 @@ body {
 }
 
 .intro-bloc-content {
-   @apply font-2 sm:text-base text-sm text-justify text-gray-700 leading-relaxed;
+   @apply sm:text-base text-sm text-justify text-gray-700 font-first leading-relaxed;
 }
 
 .custom-btn {
@@ -68,19 +68,19 @@ body {
 }
 
 .separator-container {
-   @apply sm:my-4 my-6 text-center text-gray-500 font-8 font-medium lg:text-[15px] sm:text-[14px] xs:text-[13px] text-[12px];
+   @apply sm:my-4 my-6 text-center text-gray-500 font-third font-medium lg:text-[15px] sm:text-[14px] xs:text-[13px] text-[12px];
 }
 
 .conclusion-title {
-   @apply font-7 sm:text-lg text-base mb-4 font-semibold text-gray-800;
+   @apply font-second sm:text-lg text-base mb-4 font-semibold text-gray-800;
 }
 
 .conclusion-text {
-   @apply font-2 sm:text-base text-sm text-justify text-gray-700 leading-relaxed;
+   @apply sm:text-base text-sm text-justify text-gray-700 font-first leading-relaxed;
 }
 
 .donation-text {
-   @apply mb-2 sm:text-[10.5px] text-[9.5px] font-2;
+   @apply mb-2 sm:text-[10.5px] text-[9.5px] font-first;
 }
 
 .donation-container {
@@ -96,11 +96,11 @@ body {
 }
 
 .footer-light {
-   @apply sm:text-[10.5px] text-[9.5px] sm:mt-8 mt-6 font-2;
+   @apply sm:text-[10.5px] text-[9.5px] sm:mt-8 mt-6 font-first;
 }
 
 .footer-bold {
-   @apply sm:text-[11.5px] text-[10.5px] sm:mt-2 mt-4 font-2 font-bold;
+   @apply sm:text-[11.5px] text-[10.5px] sm:mt-2 mt-4 font-first font-bold;
 }
 
 .header-cursor {

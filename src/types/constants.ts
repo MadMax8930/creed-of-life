@@ -3,9 +3,9 @@ export const PAYPAL_URL = `https://www.paypal.com/donate?business=${process.env.
 
 // Pillars
 export const backgroundStyles = [
-   'bg-[url("/images/confidence.png")] bg-cover bg-center font-10 sm:text-xl xs:text-lg text-base', // Confidence
-   'bg-[url("/images/discipline.png")] bg-cover bg-center font-10 sm:text-xl xs:text-lg text-base', // Discipline
-   'bg-[url("/images/adaptability.png")] bg-cover bg-center font-10 sm:text-xl xs:text-lg text-base', // Adaptability
+   'bg-[url("/images/confidence.png")] bg-cover bg-center font-fourth sm:text-xl xs:text-lg text-base', // Confidence
+   'bg-[url("/images/discipline.png")] bg-cover bg-center font-fourth sm:text-xl xs:text-lg text-base', // Discipline
+   'bg-[url("/images/adaptability.png")] bg-cover bg-center font-fourth sm:text-xl xs:text-lg text-base', // Adaptability
 ];
 
 // Branches
