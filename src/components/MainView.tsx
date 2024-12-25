@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Pillar, Branch, Content, HeroProps } from '@/types/mongo';
 import { useTranslations } from 'next-intl';
 import Button from '@/components/Button';
@@ -10,7 +10,9 @@ const MainView = ({ pillars, locale }: HeroProps) => {
   // State to track selected pillar and branch
   const [selectedPillar, setSelectedPillar] = useState<Pillar | null>(null);
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
+  // Handle pillar click
   const handlePillarClick = (pillar: Pillar) => {
     if (selectedPillar === pillar) {
       setSelectedPillar(null);
@@ -29,6 +31,25 @@ const MainView = ({ pillars, locale }: HeroProps) => {
       setSelectedBranch(branch);
     }
   };
+
+  // Scroll to top functionality
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Show "Back to Top" button when scrolled down
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section className="pt-12 px-4 sm:px-6 md:px-8 lg:px-16">
@@ -77,6 +98,11 @@ const MainView = ({ pillars, locale }: HeroProps) => {
             </div>
           ))}
         </div>
+      )}
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button onClick={scrollToTop} className="scroll-btn" aria-label="Back to Top">↑</button>
       )}
     </section>
   );

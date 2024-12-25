@@ -63,6 +63,10 @@ body {
    @apply hover:opacity-80 font-semibold outline-none rounded-md p-2.5;
 }
 
+.scroll-btn {
+   @apply fixed z-50 bottom-[133px] right-2 xs:right-3 sm:right-4 lg:right-5 px-3 py-1 opacity-30 hover:opacity-100 text-secondary hover:text-tertiary rounded-md shadow-md hover:shadow-slate-400 bg-tertiary hover:bg-secondary transition;
+}
+
 .conclusion-title {
    @apply font-7 sm:text-lg text-base mb-4 font-semibold text-gray-800;
 }

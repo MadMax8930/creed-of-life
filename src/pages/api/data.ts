@@ -54,7 +54,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             order: { $first: '$order' },
             branches: { $push: '$branches' },
           },
-        }
+        },
+        {
+          $sort: {
+            order: 1,
+          },
+        },
       ])
       .toArray();
 
