@@ -6,7 +6,7 @@ import { MongoClient } from 'mongodb';
 const DATABASE_URL = process.env.DATABASE_URL!;
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { locale } = req.query;
+  const { locale = 'en' } = req.query;
 
   // Ensure locale is provided
   if (!locale || typeof locale !== 'string') {
