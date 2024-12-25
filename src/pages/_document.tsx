@@ -8,7 +8,7 @@ export default function Document() {
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="Creed of Life: A journey of personal growth, embracing confidence, discipline, and adaptability to create a life of purpose, meaning, and transformation." />
-      <meta name="keywords" content="Creed of Life, personal growth, confidence, discipline, adaptability, self-awareness, resilience, action, behavior, emotional balance, self-improvement, guide, philosophy, psychology, deep thoughts, meaning of life, how to get better" />
+      <meta name="keywords" content="Creed of Life, personal growth, confidence, discipline, adaptability, self-awareness, resilience, action, behavior, emotional balance, self-improvement, guide, philosophy, psychology, deep thoughts, meaning of life, how to get better, creedoflife, creed-of-life" />
       <meta name="author" content="Max Surnin" />
 
       {/* Social Media Open Graph */}
