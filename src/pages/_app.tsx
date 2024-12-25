@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app';
 import { NextIntlClientProvider } from 'next-intl';
-import './globals.css';
+import '../styles/globals.cs';
 
 export default function MyApp({ Component, pageProps }: AppProps) {   
    return (
