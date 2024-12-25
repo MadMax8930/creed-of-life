@@ -1,5 +1,5 @@
 ## Creed of Life
-branch: "maxou" (Node version 18.18)
+under Node version 18.18 (branch: "maxou")
 
 ### Functionalities:
 
