@@ -9,7 +9,7 @@ const Donation = () => {
    const t = useTranslations('uiJSON');
 
   return (
-    <div className="mt-12 pt-6 mb-4 text-center w-full">
+    <div className="text-center mb-6 w-full">
       <p className="donation-text">If you enjoyed this guide, consider supporting us:</p>
       <div className="donation-container">
         <Link href={PAYPAL_URL} passHref target="_blank" rel="noopener noreferrer">

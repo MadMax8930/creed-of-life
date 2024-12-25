@@ -48,11 +48,19 @@ body {
 }
 
 .main-subtitle {
-   @apply font-2 sm:text-base text-sm;
+   @apply font-2 sm:text-base text-sm text-gray-700 leading-relaxed;
 }
 
 .custom-btn {
    @apply hover:opacity-80 font-semibold outline-none rounded-md p-2.5;
+}
+
+.conclusion-title {
+   @apply font-7 sm:text-lg text-base mb-4 font-semibold text-gray-800;
+}
+
+.conclusion-text {
+   @apply font-2 sm:text-base text-sm text-justify text-gray-700 leading-relaxed;
 }
 
 .donation-text {
@@ -62,6 +70,7 @@ body {
 .donation-container {
    @apply flex justify-center items-center space-x-4;
 }
+
 .donation-btn {
    @apply flex bg-tertiary text-secondary rounded px-3 py-2 hover:scale-110 md:text-[12.5px] text-[11px];
 }
