@@ -20,7 +20,7 @@ const Donation = () => {
         </Link>
       </div>
       <div className="footer-container">
-        <p className="footer-light">{t('mainFooter')}</p>
+        <p className="footer-light">{t('outroBloc')}</p>
         <p className="footer-bold">
           &copy; {new Date().getFullYear()} Max Surnin. All rights reserved.
         </p>

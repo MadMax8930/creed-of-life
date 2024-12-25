@@ -9,11 +9,13 @@
    "uiJSON": {
       "mainTitle": "Crédo de Vie 101",
       "mainSubtitle": "Libérez la croissance grâce à la confiance, la discipline et l'adaptabilité",
-      "mainButton": "Explorer en Profondeur",
-      "mainFooter": "Merci de votre visite ! Que votre voyage soit rempli de force, de clarté et de transformation."
+      "toggleBtn": "Explorer en Profondeur",
+      "concTitle": "Conclusion",
+      "concText": "En construisant la confiance, en cultivant la discipline et en adoptant l'adaptabilité, vous posez les bases de la croissance personnelle continue. C'est l'essence du Credo de la Vie — un engagement à évoluer avec un but, intégrité et authenticité. La croissance ne concerne pas la perfection, mais le progrès. Chaque pas que vous faites, aussi petit soit-il, contribue à façonner la vie que vous êtes destiné à vivre.\n\nCes principes vous permettent de faire face aux défis avec force et clarté, transformant les obstacles en opportunités de croissance. Chaque revers et succès est un moment pour affiner votre caractère, vous aligner avec votre véritable objectif et approfondir votre compréhension de vous-même.\n\nSouvenez-vous, la croissance n'est pas une ligne droite ; c'est un processus dynamique d'apprentissage et d'évolution. À chaque défi, vous développez plus de sagesse, une résilience plus profonde et une connexion plus forte avec votre véritable moi. Faites confiance au processus, et sachez qu'en vivant le Credo de la Vie, vous créez une vie pleine de sens, de profondeur et de transformation — une vie qui vous est unique, riche en potentiel et en croissance perpétuelle.",
+      "outroBloc": "Merci de votre visite ! Que votre voyage soit rempli de force, de clarté et de transformation."
    },
    "seoJSON": {
-      "descHead": "Un guide pratique pour la confiance, le but et une croissance durable"
+      "descHead": "Guide pratique pour une croissance durable et continue"
    },
    "pillarsJSON": {
       "Confidence in Oneself": "Confiance en soi",
@@ -30,9 +32,5 @@
       "Flexibility": "Flexibilité",
       "Learning Mindset": "Mentalité d'apprentissage",
       "Emotional Balance": "Équilibre émotionnel"
-   },
-   "endingJSON": {
-      "concTitle": "Conclusion",
-      "concText": "En construisant la confiance, en cultivant la discipline et en adoptant l'adaptabilité, vous posez les bases de la croissance personnelle continue. C'est l'essence du Credo de la Vie — un engagement à évoluer avec un but, intégrité et authenticité. La croissance ne concerne pas la perfection, mais le progrès. Chaque pas que vous faites, aussi petit soit-il, contribue à façonner la vie que vous êtes destiné à vivre.\n\nCes principes vous permettent de faire face aux défis avec force et clarté, transformant les obstacles en opportunités de croissance. Chaque revers et succès est un moment pour affiner votre caractère, vous aligner avec votre véritable objectif et approfondir votre compréhension de vous-même.\n\nSouvenez-vous, la croissance n'est pas une ligne droite ; c'est un processus dynamique d'apprentissage et d'évolution. À chaque défi, vous développez plus de sagesse, une résilience plus profonde et une connexion plus forte avec votre véritable moi. Faites confiance au processus, et sachez qu'en vivant le Credo de la Vie, vous créez une vie pleine de sens, de profondeur et de transformation — une vie qui vous est unique, riche en potentiel et en croissance perpétuelle."
    }
 }

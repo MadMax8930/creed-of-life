@@ -9,11 +9,13 @@
    "uiJSON": {
       "mainTitle": "Creed of Life 101",
       "mainSubtitle": "Unlock Growth Through Confidence, Discipline, and Adaptability",
-      "mainButton": "Explore in Depth",
-      "mainFooter": "Thank you for visiting! May your journey be filled with strength, clarity, and transformation."
+      "toggleBtn": "Explore in Depth",
+      "concTitle": "Conclusion",
+      "concText": "By building confidence, cultivating discipline, and embracing adaptability, you are laying the foundation for continuous personal growth. This is the essence of the Creed of Life — a commitment to evolving with purpose, integrity, and authenticity. Growth is not about perfection, but about progress. Every step you take, no matter how small, helps shape the life you're meant to live.\n\nThese principles empower you to face challenges with strength and clarity, turning obstacles into opportunities for growth. Each setback and success is a moment to refine your character, align with your true purpose, and deepen your understanding of yourself.\n\nRemember, growth is not a straight line; it’s a dynamic process of learning and evolving. With each challenge, you develop greater wisdom, deeper resilience, and a stronger connection to your true self. Trust in the process, and know that by living the Creed of Life, you are creating a life of meaning, depth, and transformation — one that is uniquely yours, rich with potential and ever-evolving growth.",
+      "outroBloc": "Thank you for visiting! May your journey be filled with strength, clarity, and transformation."
    },
    "seoJSON": {
-      "descHead": "A Practical Guide to Confidence, Purpose, and Lifelong Growth"
+      "descHead": "Practical guide to sustainable and continuous growth"
    },
    "pillarsJSON": {
       "Confidence in Oneself": "Confidence in Oneself",
@@ -30,9 +32,5 @@
       "Flexibility": "Flexibility",
       "Learning Mindset": "Learning Mindset",
       "Emotional Balance": "Emotional Balance"
-   },
-   "endingJSON": {
-      "concTitle": "Conclusion",
-      "concText": "By building confidence, cultivating discipline, and embracing adaptability, you are laying the foundation for continuous personal growth. This is the essence of the Creed of Life — a commitment to evolving with purpose, integrity, and authenticity. Growth is not about perfection, but about progress. Every step you take, no matter how small, helps shape the life you're meant to live.\n\nThese principles empower you to face challenges with strength and clarity, turning obstacles into opportunities for growth. Each setback and success is a moment to refine your character, align with your true purpose, and deepen your understanding of yourself.\n\nRemember, growth is not a straight line; it’s a dynamic process of learning and evolving. With each challenge, you develop greater wisdom, deeper resilience, and a stronger connection to your true self. Trust in the process, and know that by living the Creed of Life, you are creating a life of meaning, depth, and transformation — one that is uniquely yours, rich with potential and ever-evolving growth."
    }
 }

@@ -9,11 +9,13 @@
    "uiJSON": {
       "mainTitle": "Creed de la Vida 101",
       "mainSubtitle": "Descubre el crecimiento a través de la confianza, la disciplina y la adaptabilidad",
-      "mainButton": "Explorar en Profundidad",
-      "mainFooter": "¡Gracias por visitarnos! Que tu viaje esté lleno de fuerza, claridad y transformación."
+      "toggleBtn": "Explorar en Profundidad",
+      "concTitle": "Conclusión",
+      "concText": "Al construir confianza, cultivar disciplina y adoptar la adaptabilidad, estás sentando las bases para el crecimiento personal continuo. Esta es la esencia del Credo de la Vida: un compromiso de evolucionar con propósito, integridad y autenticidad. El crecimiento no se trata de perfección, sino de progreso. Cada paso que das, por pequeño que sea, ayuda a moldear la vida que estás destinado a vivir.\n\nEstos principios te empoderan para enfrentar desafíos con fuerza y claridad, convirtiendo los obstáculos en oportunidades de crecimiento. Cada retroceso y éxito es un momento para refinar tu carácter, alinearte con tu verdadero propósito y profundizar tu comprensión de ti mismo.\n\nRecuerda, el crecimiento no es una línea recta; es un proceso dinámico de aprendizaje y evolución. Con cada desafío, desarrollas mayor sabiduría, resiliencia más profunda y una conexión más fuerte con tu verdadero ser. Confía en el proceso y sabe que al vivir el Credo de la Vida, estás creando una vida llena de significado, profundidad y transformación — una vida única, rica en potencial y crecimiento en constante evolución.",
+      "outroBloc": "¡Gracias por visitarnos! Que tu viaje esté lleno de fuerza, claridad y transformación."
    },
    "seoJSON": {
-      "descHead": "Una guía práctica para la confianza, el propósito y el crecimiento personal"
+      "descHead": "Guía práctica para un crecimiento sostenible y continuo"
    },
    "pillarsJSON": {
       "Confidence in Oneself": "Confianza en Uno Mismo",
@@ -30,9 +32,5 @@
       "Flexibility": "Flexibilidad",
       "Learning Mindset": "Mentalidad de Aprendizaje",
       "Emotional Balance": "Equilibrio Emocional"
-   },
-   "endingJSON": {
-      "concTitle": "Conclusión",
-      "concText": "Al construir confianza, cultivar disciplina y adoptar la adaptabilidad, estás sentando las bases para el crecimiento personal continuo. Esta es la esencia del Credo de la Vida: un compromiso de evolucionar con propósito, integridad y autenticidad. El crecimiento no se trata de perfección, sino de progreso. Cada paso que das, por pequeño que sea, ayuda a moldear la vida que estás destinado a vivir.\n\nEstos principios te empoderan para enfrentar desafíos con fuerza y claridad, convirtiendo los obstáculos en oportunidades de crecimiento. Cada retroceso y éxito es un momento para refinar tu carácter, alinearte con tu verdadero propósito y profundizar tu comprensión de ti mismo.\n\nRecuerda, el crecimiento no es una línea recta; es un proceso dinámico de aprendizaje y evolución. Con cada desafío, desarrollas mayor sabiduría, resiliencia más profunda y una conexión más fuerte con tu verdadero ser. Confía en el proceso y sabe que al vivir el Credo de la Vida, estás creando una vida llena de significado, profundidad y transformación — una vida única, rica en potencial y crecimiento en constante evolución."
    }
 }
