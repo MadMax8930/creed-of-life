@@ -67,6 +67,10 @@ body {
    @apply fixed z-50 bottom-[133px] right-2 xs:right-3 sm:right-4 lg:right-5 px-3 py-1 opacity-60 hover:opacity-100 text-secondary hover:text-tertiary rounded-md shadow-md hover:shadow-slate-400 bg-tertiary hover:bg-secondary transition;
 }
 
+.separator-container {
+   @apply sm:my-4 my-6 text-center text-gray-500 font-8 font-medium lg:text-[15px] sm:text-[14px] xs:text-[13px] text-[12px];
+}
+
 .conclusion-title {
    @apply font-7 sm:text-lg text-base mb-4 font-semibold text-gray-800;
 }

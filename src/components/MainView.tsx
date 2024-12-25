@@ -7,6 +7,7 @@ import Button from '@/components/Button';
 const MainView = ({ pillars, locale }: HeroProps) => {
   const pT = useTranslations('pillarsJSON');
   const bT = useTranslations('branchesJSON');
+  const sT = useTranslations('uiJSON');
 
   // State to track selected pillar and branch
   const [selectedPillar, setSelectedPillar] = useState<Pillar | null>(null);
@@ -78,6 +79,13 @@ const MainView = ({ pillars, locale }: HeroProps) => {
           />
         ))}
       </div>
+
+      {/* Display separator */}
+      {selectedPillar && (
+        <div className="separator-container">
+          {`↓ ${sT('separatorInfo') || ''} ↓`}
+        </div>
+      )}
 
       {/* Display branches in a separate panel */}
       {selectedPillar && (
