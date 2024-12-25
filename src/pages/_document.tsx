@@ -27,6 +27,8 @@ export default function Document() {
       {/* Favicon */}
       <link rel="icon" href="/favicon.ico" />
 
+      {/* Fonts */}
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Bitter:wght@700&family=Raleway:wght@700&family=Archivo+Black&family=Montserrat:wght@700&display=swap" />
       <body className="bg-gray-50 text-gray-800">
         <Main />
         <NextScript />
