@@ -53,6 +53,5 @@ export async function getStaticProps({locale}: GetStaticPropsContext) {
        jsonData,
        locale,
      },
-     revalidate: 60, // Revalidate every 60 seconds (ISR)
    };
 }
