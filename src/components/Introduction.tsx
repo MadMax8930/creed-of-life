@@ -39,11 +39,18 @@ const TypingEffect = ({ textKey, style }: { textKey: string; style: string }) =>
 };
 
 const Introduction = () => {
+   const t = useTranslations('uiJSON');
+
   return (
     <div className="intro-container">
       <div className="intro-text-wrapper">
-      <TypingEffect textKey="mainTitle" style="main-title" />
-      <TypingEffect textKey="mainSubtitle" style="main-subtitle" />
+        <TypingEffect textKey="mainTitle" style="main-title" />
+        <TypingEffect textKey="mainSubtitle" style="main-subtitle" />
+      </div>
+      <div className="intro-bloc-wrapper">
+        <p className="intro-bloc-content">
+          {t('introBloc')}
+        </p>
       </div>
     </div>
   );

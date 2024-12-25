@@ -51,6 +51,14 @@ body {
    @apply font-2 sm:text-base text-sm text-gray-700 leading-relaxed;
 }
 
+.intro-bloc-wrapper {
+   @apply max-w-7xl mx-auto text-left pt-2 pb-8 px-6 sm:px-14 lg:px-16;
+}
+
+.intro-bloc-content {
+   @apply font-2 sm:text-base text-sm text-justify text-gray-700 leading-relaxed;
+}
+
 .custom-btn {
    @apply hover:opacity-80 font-semibold outline-none rounded-md p-2.5;
 }

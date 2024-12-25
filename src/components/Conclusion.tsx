@@ -4,7 +4,7 @@ const Conclusion = () => {
   const t = useTranslations('uiJSON');
   
   return (
-    <section className="bg-primary pt-10 pb-12 px-4 sm:px-12">
+    <section className="bg-primary sm:pb-10 pb-8 pt-8 px-4 sm:px-12">
       <div className="max-w-7xl mx-auto text-left px-2">
         <h2 className="conclusion-title">
           {t('concTitle')}
