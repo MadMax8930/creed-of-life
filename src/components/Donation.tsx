@@ -23,7 +23,11 @@ const Donation = () => {
         <p className="footer-light">{t('outroBloc')}</p>
         <p className="footer-bold">
           &copy; {new Date().getFullYear()} &nbsp;
-          <Link className='underline' passHref href={'https://maxsurnin.com'}>Max Surnin</Link>. 
+          <Link href={'https://maxsurnin.com'} passHref legacyBehavior>
+          <a className="underline" target="_blank" rel="noopener noreferrer">
+            Max Surnin
+          </a>
+          </Link>. 
           All rights reserved.
         </p>
       </div>
