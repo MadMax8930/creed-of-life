@@ -14,7 +14,7 @@ const TreeView = ({ pillars, locale }: HeroProps) => {
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
   const [selectedContent, setSelectedContent] = useState<Content | null>(null);
 
-  // Handle pillar click
+  // Handle pillar click (initial chose)
   const handlePillarClick = (pillar: Pillar) => {
     if (selectedPillar === pillar) {
       setSelectedPillar(null); // Collapse if already selected
@@ -25,7 +25,7 @@ const TreeView = ({ pillars, locale }: HeroProps) => {
     }
   };
 
-  // Handle branch click
+  // Handle branch click (pillar already clicked, second chose)
   const handleBranchClick = (branch: Branch) => {
     if (selectedBranch === branch) {
       setSelectedBranch(null); // Collapse if already selected
@@ -35,7 +35,7 @@ const TreeView = ({ pillars, locale }: HeroProps) => {
     }
   };
 
-  // Handle content click
+  // Handle content click (pillar and branch clicked, third chose)
   const handleContentClick = (content: Content) => {
     if (selectedContent === content) {
       setSelectedContent(null); // Deselect content if already selected
