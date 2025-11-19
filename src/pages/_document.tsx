@@ -3,7 +3,16 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
   return (
     <Html lang="en">
-      <Head/>
+      <Head>
+      {/* Pixel Tracking Code */}
+      <script
+         dangerouslySetInnerHTML={{
+         __html: `
+            !function(t,a,n,e,o){try{var c=a.createElement("script");c.src="https://www.statflows.com/js/bundle.min.js",c.type="text/javascript",c.async=!0,c.onload=function(){t.statFlowAnalytics&&(t.sfa=t.statFlowAnalytics,t.statFlowAnalytics.init({appId:"0ca4f8602efc418fa84739543ed4290b",debugMode:!1,autoTrackPageEvents:!0,trackErrors:!0,trackPerformance:!0}))},c.onerror=function(){console.warn("Failed to load analytics from "+serverEndpoint)},a.head.appendChild(c)}catch(t){console.warn("Analytics initialization failed:",t)}}(window,document);
+         `,
+         }}
+      />
+      {/* End Pixel Tracking Code */}
       {/* Meta tags for SEO */}
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,6 +39,7 @@ export default function Document() {
       {/* Fonts */}
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Bitter:wght@700&family=Raleway:wght@700&family=Archivo+Black&family=Montserrat:wght@700&display=swap" />
       
+      </Head>
       <body className="bg-gray-50 text-gray-800">
         <Main />
         <NextScript />
