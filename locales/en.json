@@ -9,10 +9,9 @@
    "uiJSON": {
       "mainTitle": "Creed of Life 101",
       "mainSubtitle": "Unlock Growth Through Confidence, Discipline, and Adaptability",
-      "introBloc": "Welcome to the Creed of Life, a transformative approach designed to help you unlock your true potential and grow in impactful and enduring ways. Built on three core pillars — Confidence in Oneself, Discipline, and Adaptability — this framework empowers you to face life’s challenges with strength and clarity. Each pillar is supported by three principles, offering practical strategies to build confidence, maintain discipline, and cultivate adaptability. These steps will guide your growth, enhance resilience, and lead to a life filled with purpose and fulfillment. Start today by exploring this philosophy and begin your journey toward becoming the best version of yourself.",
-      "separatorInfo": "Explore in Depth",
+      "introBloc": "Welcome to the Creed of Life, a transformative approach designed to help you unlock your true potential and grow in impactful and enduring ways. Built on three core pillars (Confidence in Oneself, Discipline and Adaptability), this framework empowers you to face life’s challenges with strength and clarity. Each pillar is supported by three principles, offering practical strategies to build confidence, maintain discipline, and cultivate adaptability. These steps will guide your growth, enhance resilience, and lead to a life filled with purpose and fulfillment. Start today by exploring this philosophy and begin your journey toward becoming the best version of yourself.",
       "concTitle": "Conclusion",
-      "concText": "By building confidence, cultivating discipline, and embracing adaptability, you are laying the foundation for continuous personal growth. This is the essence of the Creed of Life — a commitment to evolving with purpose, integrity, and authenticity. Growth is not about perfection, but about progress. Every step you take, no matter how small, helps shape the life you're meant to live.\n\nThese principles empower you to face challenges with strength and clarity, turning obstacles into opportunities for growth. Each setback and success is a moment to refine your character, align with your true purpose, and deepen your understanding of yourself.\n\nRemember, growth is not a straight line; it’s a dynamic process of learning and evolving. With each challenge, you develop greater wisdom, deeper resilience, and a stronger connection to your true self. Trust in the process, and know that by living the Creed of Life, you are creating a life of meaning, depth, and transformation — one that is uniquely yours, rich with potential and ever-evolving growth.",
+      "concText": "By building confidence, cultivating discipline, and embracing adaptability, you are laying the foundation for continuous personal growth. This is the essence of the Creed of Life: a commitment to evolving with purpose, integrity, and authenticity. Growth is not about perfection, but about progress. Every step you take, no matter how small, helps shape the life you're meant to live.\n\nThese principles empower you to face challenges with strength and clarity, turning obstacles into opportunities for growth. Each setback and success is a moment to refine your character, align with your true purpose, and deepen your understanding of yourself.\n\nRemember, growth is not a straight line; it’s a dynamic process of learning and evolving. With each challenge, you develop greater wisdom, deeper resilience, and a stronger connection to your true self. Trust in the process, and know that by living the Creed of Life, you are creating a life of meaning, depth, and transformation, one that is uniquely yours, rich with potential and ever-evolving growth.",
       "outroBloc": "Thank you for visiting! May your journey be filled with strength, clarity, and transformation."
    },
    "seoJSON": {
@@ -22,7 +21,7 @@
       "Confidence in Oneself": "Confidence in Oneself",
       "Discipline": "Discipline",
       "Adaptability": "Adaptability"
-   }, 
+   },
    "branchesJSON": {
       "Self-Awareness": "Self-Awareness",
       "Resilience": "Resilience",
@@ -33,5 +32,76 @@
       "Flexibility": "Flexibility",
       "Learning Mindset": "Learning Mindset",
       "Emotional Balance": "Emotional Balance"
+   },
+   "siteJSON": {
+      "brand": "Creed of Life",
+      "skip": "Skip to content",
+      "motto": "Be yourself. Be good to yourself. Be good to good people.",
+      "coda": "Everything is relative.",
+      "nav": {
+         "creed": "The Creed",
+         "manifesto": "Manifesto",
+         "contact": "Contact",
+         "menu": "Menu",
+         "close": "Close menu",
+         "primary": "Main navigation",
+         "language": "Language",
+         "languageLabel": "Choose a language"
+      },
+      "home": {
+         "metaDescription": "Creed of Life is a practical guide to personal growth: nine principles of confidence, discipline and adaptability for a life of purpose, meaning and transformation.",
+         "eyebrow": "A practical philosophy in three pillars and nine principles",
+         "heroCta": "Read the creed",
+         "heroImageAlt": "Classical marble statue in black and white, torn into strips like paper",
+         "manifestoLabel": "Manifesto",
+         "creedLabel": "The Creed",
+         "creedHeading": "Three pillars. Nine principles.",
+         "startHere": "Start here",
+         "startHereText": "Read the principles in order, or open the one that speaks to you today.",
+         "closingLabel": "In closing"
+      },
+      "pillar": {
+         "label": "Pillar {numeral}",
+         "principles": "{count, plural, one {# principle} other {# principles}}"
+      },
+      "principle": {
+         "home": "Home",
+         "kicker": "Pillar {numeral}",
+         "number": "Principle {number} of {total}",
+         "readingTime": "{minutes} min read",
+         "reflections": "{count, plural, one {# reflection} other {# reflections}}",
+         "contents": "In this principle",
+         "previous": "Previous",
+         "next": "Next",
+         "alsoIn": "Also in {pillar}",
+         "all": "All principles",
+         "fallbackNotice": "Not yet translated. Shown in English.",
+         "metaTitle": "{principle}: {pillar}",
+         "metaDescriptionFallback": "{principle}, a principle of {pillar} in Creed of Life: practical reflections for sustainable personal growth.",
+         "breadcrumb": "Breadcrumb"
+      },
+      "footer": {
+         "contactLabel": "Contact",
+         "contactHeading": "Let's connect",
+         "contactText": "Business and other enquiries, collaborations, or a thought this guide sparked.",
+         "contactCta": "Get in touch",
+         "emailSubject": "CreedOfLife - General Enquiry",
+         "emailBody": "Hi Max,\n\nI found Creed of Life and wanted to get in touch about:\n\n",
+         "supportLabel": "Support",
+         "supportText": "If you enjoyed this guide, consider supporting it.",
+         "coffeeCta": "Buy me a coffee",
+         "followLabel": "Elsewhere",
+         "followText": "Videos, travel and everything else I make.",
+         "followCta": "Find me on Linktree",
+         "readIn": "Read in",
+         "rights": "All rights reserved.",
+         "newTab": "opens in a new tab",
+         "byline": "Written and built by"
+      },
+      "notFound": {
+         "title": "Page not found",
+         "text": "The page you are looking for does not exist or has moved.",
+         "cta": "Back to the creed"
+      }
    }
 }

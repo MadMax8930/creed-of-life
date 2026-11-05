@@ -7,12 +7,11 @@
       "Thai": "Thaïlandais"
    },
    "uiJSON": {
-      "mainTitle": "Crédo de Vie 101",
+      "mainTitle": "Credo de la Vie 101",
       "mainSubtitle": "Libérez la croissance grâce à la confiance, la discipline et l'adaptabilité",
-      "introBloc": "Bienvenue dans le Credo de la Vie, une approche transformatrice conçue pour vous aider à libérer votre véritable potentiel et à grandir de manière impactante et durable. Fondée sur trois piliers fondamentaux — Confiance en soi, Discipline et Adaptabilité — cette structure vous donne les moyens d’affronter les défis de la vie avec force et clarté. Chaque pilier est soutenu par trois principes, offrant des stratégies pratiques pour renforcer votre confiance, maintenir votre discipline et cultiver votre adaptabilité. Ces étapes guideront votre croissance, amélioreront votre résilience et vous mèneront à une vie remplie de sens et d’épanouissement. Commencez dès aujourd’hui à explorer cette philosophie et entamez votre voyage vers la meilleure version de vous-même.",
-      "separatorInfo": "Explorer en Profondeur",
+      "introBloc": "Bienvenue dans le Credo de la Vie, une approche transformatrice conçue pour vous aider à libérer votre véritable potentiel et à grandir de manière impactante et durable. Fondée sur trois piliers fondamentaux (Confiance en soi, Discipline et Adaptabilité), cette structure vous donne les moyens d’affronter les défis de la vie avec force et clarté. Chaque pilier est soutenu par trois principes, offrant des stratégies pratiques pour renforcer votre confiance, maintenir votre discipline et cultiver votre adaptabilité. Ces étapes guideront votre croissance, amélioreront votre résilience et vous mèneront à une vie remplie de sens et d’épanouissement. Commencez dès aujourd’hui à explorer cette philosophie et entamez votre voyage vers la meilleure version de vous-même.",
       "concTitle": "Conclusion",
-      "concText": "En construisant la confiance, en cultivant la discipline et en adoptant l'adaptabilité, vous posez les bases de la croissance personnelle continue. C'est l'essence du Credo de la Vie — un engagement à évoluer avec un but, intégrité et authenticité. La croissance ne concerne pas la perfection, mais le progrès. Chaque pas que vous faites, aussi petit soit-il, contribue à façonner la vie que vous êtes destiné à vivre.\n\nCes principes vous permettent de faire face aux défis avec force et clarté, transformant les obstacles en opportunités de croissance. Chaque revers et succès est un moment pour affiner votre caractère, vous aligner avec votre véritable objectif et approfondir votre compréhension de vous-même.\n\nSouvenez-vous, la croissance n'est pas une ligne droite ; c'est un processus dynamique d'apprentissage et d'évolution. À chaque défi, vous développez plus de sagesse, une résilience plus profonde et une connexion plus forte avec votre véritable moi. Faites confiance au processus, et sachez qu'en vivant le Credo de la Vie, vous créez une vie pleine de sens, de profondeur et de transformation — une vie qui vous est unique, riche en potentiel et en croissance perpétuelle.",
+      "concText": "En construisant la confiance, en cultivant la discipline et en adoptant l'adaptabilité, vous posez les bases de la croissance personnelle continue. C'est l'essence du Credo de la Vie : un engagement à évoluer avec un but, de l'intégrité et de l'authenticité. La croissance ne concerne pas la perfection, mais le progrès. Chaque pas que vous faites, aussi petit soit-il, contribue à façonner la vie que vous êtes destiné à vivre.\n\nCes principes vous permettent de faire face aux défis avec force et clarté, transformant les obstacles en opportunités de croissance. Chaque revers et chaque succès est un moment pour affiner votre caractère, vous aligner avec votre véritable objectif et approfondir votre compréhension de vous-même.\n\nSouvenez-vous, la croissance n'est pas une ligne droite ; c'est un processus dynamique d'apprentissage et d'évolution. À chaque défi, vous développez plus de sagesse, une résilience plus profonde et une connexion plus forte avec votre véritable moi. Faites confiance au processus, et sachez qu'en vivant le Credo de la Vie, vous créez une vie pleine de sens, de profondeur et de transformation, une vie qui vous est propre, riche en potentiel et en croissance perpétuelle.",
       "outroBloc": "Merci de votre visite ! Que votre voyage soit rempli de force, de clarté et de transformation."
    },
    "seoJSON": {
@@ -33,5 +32,76 @@
       "Flexibility": "Flexibilité",
       "Learning Mindset": "Mentalité d'apprentissage",
       "Emotional Balance": "Équilibre émotionnel"
+   },
+   "siteJSON": {
+      "brand": "Credo de la Vie",
+      "skip": "Aller au contenu",
+      "motto": "Sois toi-même. Sois bon envers toi-même. Sois bon envers les gens bien.",
+      "coda": "Tout est relatif.",
+      "nav": {
+         "creed": "Le Credo",
+         "manifesto": "Manifeste",
+         "contact": "Contact",
+         "menu": "Menu",
+         "close": "Fermer le menu",
+         "primary": "Navigation principale",
+         "language": "Langue",
+         "languageLabel": "Choisir une langue"
+      },
+      "home": {
+         "metaDescription": "Le Credo de la Vie est un guide pratique de développement personnel : neuf principes de confiance, de discipline et d’adaptabilité pour une vie pleine de sens.",
+         "eyebrow": "Une philosophie pratique en trois piliers et neuf principes",
+         "heroCta": "Lire le credo",
+         "heroImageAlt": "Statue antique en noir et blanc, déchirée en bandes comme du papier",
+         "manifestoLabel": "Manifeste",
+         "creedLabel": "Le Credo",
+         "creedHeading": "Trois piliers. Neuf principes.",
+         "startHere": "Par où commencer",
+         "startHereText": "Lisez les principes dans l’ordre, ou ouvrez celui qui vous parle aujourd’hui.",
+         "closingLabel": "Pour conclure"
+      },
+      "pillar": {
+         "label": "Pilier {numeral}",
+         "principles": "{count, plural, one {# principe} other {# principes}}"
+      },
+      "principle": {
+         "home": "Accueil",
+         "kicker": "Pilier {numeral}",
+         "number": "Principe {number} sur {total}",
+         "readingTime": "{minutes} min de lecture",
+         "reflections": "{count, plural, one {# réflexion} other {# réflexions}}",
+         "contents": "Dans ce principe",
+         "previous": "Précédent",
+         "next": "Suivant",
+         "alsoIn": "Aussi dans {pillar}",
+         "all": "Tous les principes",
+         "fallbackNotice": "Pas encore traduit. Affiché en anglais.",
+         "metaTitle": "{principle} : {pillar}",
+         "metaDescriptionFallback": "{principle}, un principe du pilier {pillar} du Credo de la Vie : des réflexions pratiques pour une croissance personnelle durable.",
+         "breadcrumb": "Fil d’Ariane"
+      },
+      "footer": {
+         "contactLabel": "Contact",
+         "contactHeading": "Échangeons",
+         "contactText": "Demandes professionnelles et autres, collaborations, ou une idée que ce guide vous a inspirée.",
+         "contactCta": "Me contacter",
+         "emailSubject": "CreedOfLife - Demande générale",
+         "emailBody": "Bonjour Max,\n\nJ’ai découvert le Credo de la Vie et je vous écris au sujet de :\n\n",
+         "supportLabel": "Soutenir",
+         "supportText": "Si ce guide vous a plu, vous pouvez le soutenir.",
+         "coffeeCta": "Offrez-moi un café",
+         "followLabel": "Ailleurs",
+         "followText": "Vidéos, voyages et tout ce que je crée.",
+         "followCta": "Me retrouver sur Linktree",
+         "readIn": "Lire en",
+         "rights": "Tous droits réservés.",
+         "newTab": "s’ouvre dans un nouvel onglet",
+         "byline": "Écrit et conçu par"
+      },
+      "notFound": {
+         "title": "Page introuvable",
+         "text": "La page que vous cherchez n’existe pas ou a été déplacée.",
+         "cta": "Retour au credo"
+      }
    }
 }
