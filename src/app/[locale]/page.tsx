@@ -10,6 +10,7 @@ import { isAppLocale, type AppLocale } from '@/i18n/routing';
 import { pickDaily, utcDay } from '@/lib/content/daily';
 import { getLibrary } from '@/lib/content/library';
 import { leadExcerpt, toParagraphs } from '@/lib/content/localize';
+import { pillarVisual } from '@/lib/pillar-visuals';
 import { localizedAlternates, openGraphLocales } from '@/lib/seo';
 import { absoluteUrl, AUTHOR, LINKTREE_URL, SITE_URL } from '@/lib/site';
 
@@ -96,34 +97,40 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
       <JsonLd data={structuredData} />
 
       <section className="wrap hero" aria-labelledby="hero-title">
-        <h1 id="hero-title" className="hero__title">
-          {titleText}
-          {edition && <span className="hero__edition">{edition}</span>}
-        </h1>
-        <div className="hero__intro">
-          <p className="hero__subtitle">{ui('mainSubtitle')}</p>
-          <p className="hero__motto">
-            <strong>{site('motto')}</strong>
-            {site('coda')}
-          </p>
+        <div className="hero__grid">
+          <h1 id="hero-title" className="hero__title">
+            {titleText}
+            {edition && <span className="hero__edition">{edition}</span>}
+          </h1>
+
+          {/* The torn statue shares the masthead with the title instead of
+              sitting below it as a separate panel. */}
+          <figure className="hero__figure">
+            <Image
+              src={statue}
+              alt={site('home.heroImageAlt')}
+              fill
+              priority
+              quality={70}
+              sizes="(min-width: 60rem) 42vw, 100vw"
+              placeholder="blur"
+            />
+            <TornEdge seed={3} fill="var(--color-plaster)" className="hero__tear hero__tear--top" />
+            <TornEdge seed={7} fill="var(--color-plaster)" side="left" className="hero__tear hero__tear--left" />
+            <TornEdge seed={11} fill="var(--color-plaster)" direction="up" className="hero__tear hero__tear--bottom" />
+          </figure>
+
+          <div className="hero__copy">
+            <p className="hero__subtitle">{ui('mainSubtitle')}</p>
+            <p className="hero__motto">
+              <strong>{site('motto')}</strong>
+              {site('coda')}
+            </p>
+            <a className="button" href="#creed">
+              {site('home.heroCta')}
+            </a>
+          </div>
         </div>
-        <div className="hero__cta-row">
-          <a className="button" href="#creed">
-            {site('home.heroCta')}
-          </a>
-        </div>
-        <figure className="hero__figure">
-          <TornEdge seed={3} fill="var(--color-plaster)" className="absolute top-0 left-0 z-10" />
-          <Image
-            src={statue}
-            alt={site('home.heroImageAlt')}
-            priority
-            quality={70}
-            sizes="(min-width: 90rem) 84rem, 100vw"
-            placeholder="blur"
-          />
-          <TornEdge seed={11} fill="var(--color-plaster)" direction="up" className="absolute bottom-0 left-0 z-10" />
-        </figure>
       </section>
 
       {daily && (
@@ -131,7 +138,12 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
           library={library}
           day={day}
           excerpt={leadExcerpt(daily.passage.text, locale)}
-          labels={{ label: site('daily.label'), title: site('daily.title'), cta: site('daily.cta') }}
+          labels={{
+            label: site('daily.label'),
+            title: site('daily.title'),
+            cta: site('daily.cta'),
+            save: site('saved.save'),
+          }}
         />
       )}
 
@@ -140,7 +152,28 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
           <h2 id="manifesto-title" className="section-title">
             {site('home.manifestoLabel')}
           </h2>
-          <p className="manifesto__text">{ui('introBloc')}</p>
+          <div>
+            <p className="manifesto__text">{ui('introBloc')}</p>
+            {hasContent && (
+              /* The three pillars the manifesto names, as a way into them. */
+              <nav className="legend" aria-label={site('explorer.pillars')}>
+                {library.pillars.map((pillar, i) => (
+                  <a
+                    key={pillar.slug}
+                    href={`#${pillar.slug}`}
+                    className="legend__item"
+                    style={{ '--pillar': pillarVisual(pillar.slug, i).color } as React.CSSProperties}
+                  >
+                    <span className="legend__numeral" aria-hidden="true">
+                      {pillar.numeral}
+                    </span>
+                    <span className="legend__name">{pillar.name}</span>
+                    <span className="legend__count">{pillar.countLabel}</span>
+                  </a>
+                ))}
+              </nav>
+            )}
+          </div>
         </div>
       </section>
 

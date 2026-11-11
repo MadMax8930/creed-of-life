@@ -11,6 +11,8 @@ interface TornEdgeProps {
   fiber?: string;
   /** "down": the torn shape hangs from the top. "up": rises from the bottom. */
   direction?: 'down' | 'up';
+  /** "left" / "right": a vertical tear along that side instead. */
+  side?: 'left' | 'right';
   className?: string;
 }
 
@@ -27,30 +29,34 @@ function rng(seed: number) {
 const W = 1200;
 const H = 40;
 
-function edgePath(seed: number, base: number, amplitude: number): string {
+function edgePath(seed: number, base: number, amplitude: number, vertical = false): string {
   const rand = rng(seed);
   const points: string[] = [];
+  const at = (along: number, depth: number) =>
+    vertical ? `${depth.toFixed(1)},${along.toFixed(1)}` : `${along.toFixed(1)},${depth.toFixed(1)}`;
   let x = 0;
   while (x < W) {
     const y = base + (rand() - 0.5) * amplitude + (rand() < 0.12 ? (rand() - 0.5) * amplitude * 1.6 : 0);
-    points.push(`${x.toFixed(1)},${Math.max(0, Math.min(H, y)).toFixed(1)}`);
+    points.push(at(x, Math.max(0, Math.min(H, y))));
     x += 6 + rand() * 22;
   }
-  points.push(`${W},${base.toFixed(1)}`);
-  return `M0,0 L${points.join(' L')} L${W},0 Z`;
+  points.push(at(W, base));
+  return `M0,0 L${points.join(' L')} L${at(W, 0)} Z`;
 }
 
-export default function TornEdge({ seed = 7, fill, fiber, direction = 'down', className }: TornEdgeProps) {
-  const main = edgePath(seed, 18, 18);
-  const core = fiber ? edgePath(seed + 101, 24, 16) : null;
+export default function TornEdge({ seed = 7, fill, fiber, direction = 'down', side, className }: TornEdgeProps) {
+  const vertical = side !== undefined;
+  const main = edgePath(seed, 18, 18, vertical);
+  const core = fiber ? edgePath(seed + 101, 24, 16, vertical) : null;
+  const flip = vertical ? (side === 'right' ? 'scaleX(-1)' : undefined) : direction === 'up' ? 'scaleY(-1)' : undefined;
   return (
     <svg
-      className={['torn', className].filter(Boolean).join(' ')}
-      viewBox={`0 0 ${W} ${H}`}
+      className={['torn', vertical && 'torn--side', className].filter(Boolean).join(' ')}
+      viewBox={vertical ? `0 0 ${H} ${W}` : `0 0 ${W} ${H}`}
       preserveAspectRatio="none"
       aria-hidden="true"
       focusable="false"
-      style={direction === 'up' ? { transform: 'scaleY(-1)' } : undefined}
+      style={flip ? { transform: flip } : undefined}
     >
       {core && <path d={core} fill={fiber} />}
       <path d={main} fill={fill} />

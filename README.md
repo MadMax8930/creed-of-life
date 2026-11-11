@@ -91,6 +91,10 @@ field, and is labelled as such. Paragraphs are separated by blank lines in `text
   URL hash (`/#resilience`), so it can be linked and restored.
 - **Principle pages** (`/[locale]/principles/[slug]`): the same switcher and
   reading layout as real links, one indexable page per principle.
+- **Emblems** (`PrincipleEmblem`): one custom SVG per principle, drawn as a
+  single set (64 grid, 2.5 stroke, outline plus one solid shape) and coloured by
+  its pillar. They are keyed by principle slug; a new principle gets a neutral
+  fallback until its emblem is drawn.
 - **Daily Reset**: one existing passage per UTC day, chosen deterministically
   (`src/lib/content/daily.ts`), the same for every visitor.
 - **Saved Reflections** (`/[locale]/saved`): bookmarks kept in the browser

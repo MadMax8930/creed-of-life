@@ -7,6 +7,7 @@ import { pillarVisual } from '@/lib/pillar-visuals';
 import { removeSaved, useSavedIds } from '@/lib/saved';
 import { useLibrary } from '@/lib/useLibrary';
 import Passage from './Passage';
+import PrincipleEmblem from './PrincipleEmblem';
 
 export interface SavedLabels {
   loading: string;
@@ -94,7 +95,10 @@ export default function SavedReflections({
         return (
           <div key={id} className="saved__item" style={{ '--pillar': color } as React.CSSProperties}>
             <p className="saved__context">
-              {ref.principle.name}, {ref.pillar.name}
+              <PrincipleEmblem slug={ref.principle.slug} className="saved__emblem" />
+              <span>
+                {ref.principle.name}, {ref.pillar.name}
+              </span>
             </p>
             <Passage
               passage={ref.passage}

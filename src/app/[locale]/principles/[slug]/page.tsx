@@ -8,6 +8,7 @@ import TornEdge from '@/components/TornEdge';
 import { isAppLocale, type AppLocale } from '@/i18n/routing';
 import CreedIndex from '@/components/CreedIndex';
 import Passage from '@/components/Passage';
+import PrincipleEmblem from '@/components/PrincipleEmblem';
 import { getAllPrinciples, getPrinciple } from '@/lib/content';
 import { getLibrary } from '@/lib/content/library';
 import { excerpt, localizeReflection } from '@/lib/content/localize';
@@ -150,6 +151,7 @@ export default async function PrinciplePage({ params }: PageProps<'/[locale]/pri
             <li aria-current="page">{principle.name}</li>
           </ol>
         </nav>
+        <PrincipleEmblem slug={principle.slug} className="article-emblem" />
         <Link className="kicker" href={pillar.href}>
           {pillar.label}: {pillar.name}
         </Link>
@@ -177,20 +179,23 @@ export default async function PrinciplePage({ params }: PageProps<'/[locale]/pri
       <div className="wrap">
         {/* The same principle switcher as the home explorer, as real links. */}
         <nav
-          className="ptabs ptabs--page"
+          className="pcards pcards--page"
           aria-label={site('explorer.principlesOf', { pillar: pillar.name })}
         >
           {pillar.principles.map((item) => (
             <Link
               key={item.slug}
-              className="ptab"
+              className="pcard"
               href={item.href}
               aria-current={item.slug === slug ? 'page' : undefined}
             >
-              <span className="ptab__n" aria-hidden="true">
-                {item.number}
+              <PrincipleEmblem slug={item.slug} className="pcard__emblem" />
+              <span className="pcard__text">
+                <span className="pcard__n" aria-hidden="true">
+                  {item.number}
+                </span>
+                <span className="pcard__name">{item.name}</span>
               </span>
-              <span className="ptab__name">{item.name}</span>
             </Link>
           ))}
         </nav>
