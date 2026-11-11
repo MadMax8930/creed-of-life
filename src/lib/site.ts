@@ -10,10 +10,9 @@ export const AUTHOR = {
 
 export const LINKTREE_URL = 'https://linktr.ee/maxsurnin';
 
-export const CONTACT = {
-  to: 'maximesurnin@gmail.com',
-  cc: 'enjoyoway@gmail.com',
-} as const;
+/** The one contact address used everywhere on the site. */
+export const CONTACT_EMAIL = 'enjoyoway@gmail.com';
+export const CONTACT_HREF = `mailto:${CONTACT_EMAIL}`;
 
 /** Buy Me a Coffee stays driven by the existing Vercel env var; hidden if unset. */
 export const COFFEE_URL = process.env.NEXT_PUBLIC_BUYMEACOFFEE_USERNAME
@@ -49,17 +48,7 @@ export function absoluteUrl(locale: AppLocale, path = '/'): string {
   return `${SITE_URL}${localePath(locale, path)}`;
 }
 
-/** RFC 6068 mailto with a CC, subject and body. */
-export function mailtoHref(subject: string, body: string): string {
-  const enc = (value: string) => encodeURIComponent(value.replace(/\r?\n/g, '\r\n'));
-  return `mailto:${CONTACT.to}?cc=${enc(CONTACT.cc)}&subject=${enc(subject)}&body=${enc(body)}`;
-}
-
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 export function roman(position: number): string {
   return ROMAN[position] ?? String(position + 1);
-}
-
-export function twoDigits(n: number): string {
-  return String(n).padStart(2, '0');
 }

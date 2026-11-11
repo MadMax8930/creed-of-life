@@ -6,12 +6,15 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import JsonLd from '@/components/JsonLd';
 import TornEdge from '@/components/TornEdge';
 import { isAppLocale, type AppLocale } from '@/i18n/routing';
+import CreedIndex from '@/components/CreedIndex';
+import Passage from '@/components/Passage';
 import { getAllPrinciples, getPrinciple } from '@/lib/content';
-import { excerpt, localizeReflection, readingMinutes, toParagraphs } from '@/lib/content/localize';
+import { getLibrary } from '@/lib/content/library';
+import { excerpt, localizeReflection } from '@/lib/content/localize';
 import { getNameTranslators } from '@/lib/labels';
 import { pillarVisual } from '@/lib/pillar-visuals';
 import { localizedAlternates, openGraphLocales } from '@/lib/seo';
-import { absoluteUrl, AUTHOR, localePath, roman, SITE_URL } from '@/lib/site';
+import { absoluteUrl, AUTHOR, localePath, SITE_URL } from '@/lib/site';
 
 export const revalidate = 3600;
 
@@ -41,7 +44,7 @@ export async function generateMetadata({ params }: PageProps<'/[locale]/principl
 
   const first = principle.reflections.map((r) => localizeReflection(r, locale)).find((r) => r?.text);
   const description =
-    first && first.lang === locale
+    first && first.textLang === locale
       ? excerpt(first.text, locale)
       : site('principle.metaDescriptionFallback', { principle: principleName, pillar: pillarName });
 
@@ -76,38 +79,36 @@ export async function generateMetadata({ params }: PageProps<'/[locale]/principl
 export default async function PrinciplePage({ params }: PageProps<'/[locale]/principles/[slug]'>) {
   const data = await load(params);
   if (!data) notFound();
-  const { slug, principle, pillar, previous, next, total } = data;
+  const { slug } = data;
   const locale = data.locale as AppLocale;
   setRequestLocale(locale);
 
-  const [site, names] = await Promise.all([
-    getTranslations({ locale, namespace: 'siteJSON' }),
-    getNameTranslators(locale),
-  ]);
+  const [site, library] = await Promise.all([getTranslations({ locale, namespace: 'siteJSON' }), getLibrary(locale)]);
 
-  const visual = pillarVisual(pillar.slug, pillar.position);
-  const principleName = names.principleName(principle.name);
-  const pillarName = names.pillarName(pillar.name);
+  // The same localized view the home explorer uses, so both read identically.
+  const pillarIndex = library.pillars.findIndex((p) => p.principles.some((x) => x.slug === slug));
+  const pillar = library.pillars[pillarIndex];
+  const principle = pillar?.principles.find((x) => x.slug === slug);
+  if (!pillar || !principle) notFound();
+
+  const order = library.pillars.flatMap((p) => p.principles);
+  const at = order.indexOf(principle);
+  const previous = at > 0 ? order[at - 1] : undefined;
+  const next = at < order.length - 1 ? order[at + 1] : undefined;
+
+  const visual = pillarVisual(pillar.slug, pillarIndex);
   const homeHref = localePath(locale, '/');
-  const pillarHref = `${homeHref}#${pillar.slug}`;
-  const reflections = principle.reflections
-    .map((r) => ({ id: r.id, content: localizeReflection(r, locale) }))
-    .filter((r): r is { id: string; content: NonNullable<typeof r.content> } => r.content !== null);
-  const minutes = readingMinutes(
-    reflections.map((r) => `${r.content.title} ${r.content.text}`),
-    locale,
-  );
-  const siblings = pillar.principles.filter((p) => p.id !== principle.id);
-  const published = principle.reflections.map((r) => r.createdAt).filter(Boolean).sort()[0];
+  const published = data.principle.reflections.map((r) => r.createdAt).filter(Boolean).sort()[0];
   const url = absoluteUrl(locale, `/principles/${slug}`);
+  const passageLabels = { save: site('saved.save'), fallbackNotice: site('principle.fallbackNotice') };
 
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'Article',
-        headline: principleName,
-        articleSection: pillarName,
+        headline: principle.name,
+        articleSection: pillar.name,
         inLanguage: locale,
         url,
         mainEntityOfPage: url,
@@ -121,8 +122,8 @@ export default async function PrinciplePage({ params }: PageProps<'/[locale]/pri
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: site('principle.home'), item: absoluteUrl(locale, '/') },
-          { '@type': 'ListItem', position: 2, name: pillarName, item: `${absoluteUrl(locale, '/')}#${pillar.slug}` },
-          { '@type': 'ListItem', position: 3, name: principleName, item: url },
+          { '@type': 'ListItem', position: 2, name: pillar.name, item: `${absoluteUrl(locale, '/')}#${pillar.slug}` },
+          { '@type': 'ListItem', position: 3, name: principle.name, item: url },
         ],
       },
     ],
@@ -142,30 +143,30 @@ export default async function PrinciplePage({ params }: PageProps<'/[locale]/pri
               </Link>
             </li>
             <li>
-              <Link className="link" href={pillarHref}>
-                {pillarName}
+              <Link className="link" href={pillar.href}>
+                {pillar.name}
               </Link>
             </li>
-            <li aria-current="page">{principleName}</li>
+            <li aria-current="page">{principle.name}</li>
           </ol>
         </nav>
-        <Link className="kicker" href={pillarHref}>
-          {site('principle.kicker', { numeral: roman(pillar.position) })}: {pillarName}
+        <Link className="kicker" href={pillar.href}>
+          {pillar.label}: {pillar.name}
         </Link>
-        <h1 className="article-title">{principleName}</h1>
+        <h1 className="article-title">{principle.name}</h1>
         <ul className="article-meta note">
-          <li>{site('principle.number', { number: principle.number + 1, total })}</li>
-          {reflections.length > 0 && <li>{site('principle.reflections', { count: reflections.length })}</li>}
-          {reflections.length > 0 && <li>{site('principle.readingTime', { minutes })}</li>}
+          <li>{principle.positionLabel}</li>
+          {principle.passages.length > 0 && <li>{principle.countLabel}</li>}
+          {principle.passages.length > 0 && <li>{principle.minutesLabel}</li>}
         </ul>
       </header>
 
       <figure className="wrap" style={{ margin: 0 }}>
         <div className="article-figure">
-          <TornEdge seed={principle.number + 41} fill="var(--color-plaster)" className="absolute top-0 left-0 z-10" />
+          <TornEdge seed={principle.number + 40} fill="var(--color-plaster)" className="absolute top-0 left-0 z-10" />
           <Image src={visual.image} alt="" priority quality={70} sizes="(min-width: 90rem) 84rem, 100vw" placeholder="blur" />
           <TornEdge
-            seed={principle.number + 53}
+            seed={principle.number + 52}
             fill="var(--color-plaster)"
             direction="up"
             className="absolute bottom-0 left-0 z-10"
@@ -173,68 +174,78 @@ export default async function PrinciplePage({ params }: PageProps<'/[locale]/pri
         </div>
       </figure>
 
-      <div className="wrap article-body">
-        {reflections.length > 1 ? (
-          <nav className="toc" aria-labelledby="toc-title">
-            <p id="toc-title" className="note">
-              {site('principle.contents')}
-            </p>
-            <ol>
-              {reflections.map((r, i) => (
-                <li key={r.id}>
-                  <a href={`#r${i + 1}`} lang={r.content.lang}>
-                    {r.content.title}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        ) : (
-          <div />
-        )}
-
-        <div className="prose">
-          {reflections.map((r, i) => (
-            <section
-              key={r.id}
-              id={`r${i + 1}`}
-              className="reflection"
-              lang={r.content.lang !== locale ? r.content.lang : undefined}
-              aria-labelledby={`r${i + 1}-title`}
-            >
-              {r.content.lang !== locale && (
-                <p className="note" lang={locale}>
-                  {site('principle.fallbackNotice')}
-                </p>
-              )}
-              <h2 id={`r${i + 1}-title`} className="reflection__title">
-                <span className="reflection__index" aria-hidden="true">
-                  {principle.number + 1}.{i + 1}
-                </span>
-                {r.content.title}
-              </h2>
-              {toParagraphs(r.content.text).map((paragraph, j) => (
-                <p key={j}>{paragraph}</p>
-              ))}
-            </section>
-          ))}
-        </div>
-      </div>
-
       <div className="wrap">
+        {/* The same principle switcher as the home explorer, as real links. */}
+        <nav
+          className="ptabs ptabs--page"
+          aria-label={site('explorer.principlesOf', { pillar: pillar.name })}
+        >
+          {pillar.principles.map((item) => (
+            <Link
+              key={item.slug}
+              className="ptab"
+              href={item.href}
+              aria-current={item.slug === slug ? 'page' : undefined}
+            >
+              <span className="ptab__n" aria-hidden="true">
+                {item.number}
+              </span>
+              <span className="ptab__name">{item.name}</span>
+            </Link>
+          ))}
+        </nav>
+
+        <div className="reading reading--page">
+          {principle.passages.length > 1 ? (
+            <nav className="toc" aria-labelledby="toc-title">
+              <p id="toc-title" className="note">
+                {site('principle.contents')}
+              </p>
+              <ol>
+                {principle.passages.map((passage) => (
+                  <li key={passage.id}>
+                    <a
+                      href={`#p-${passage.id}`}
+                      lang={passage.titleLang !== locale ? passage.titleLang : undefined}
+                    >
+                      {passage.title}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          ) : (
+            <div />
+          )}
+
+          <div className="reading__passages">
+            {principle.passages.length === 0 && <p className="note">{site('explorer.empty')}</p>}
+            {principle.passages.map((passage, i) => (
+              <Passage
+                key={passage.id}
+                passage={passage}
+                index={`${principle.number}.${i + 1}`}
+                locale={locale}
+                headingLevel={2}
+                labels={passageLabels}
+              />
+            ))}
+          </div>
+        </div>
+
         <nav className="pager" aria-label={`${site('principle.previous')} / ${site('principle.next')}`}>
           {previous ? (
-            <Link href={localePath(locale, `/principles/${previous.slug}`)} rel="prev">
+            <Link href={previous.href} rel="prev">
               <span className="note">{site('principle.previous')}</span>
-              <span className="pager__name">{names.principleName(previous.name)}</span>
+              <span className="pager__name">{previous.name}</span>
             </Link>
           ) : (
             <span />
           )}
           {next ? (
-            <Link href={localePath(locale, `/principles/${next.slug}`)} rel="next">
+            <Link href={next.href} rel="next">
               <span className="note">{site('principle.next')}</span>
-              <span className="pager__name">{names.principleName(next.name)}</span>
+              <span className="pager__name">{next.name}</span>
             </Link>
           ) : (
             <Link href={`${homeHref}#creed`}>
@@ -244,27 +255,7 @@ export default async function PrinciplePage({ params }: PageProps<'/[locale]/pri
           )}
         </nav>
 
-        {siblings.length > 0 && (
-          <section className="siblings" aria-labelledby="siblings-title">
-            <h2 id="siblings-title" className="note" style={{ margin: 0 }}>
-              {site('principle.alsoIn', { pillar: pillarName })}
-            </h2>
-            <ul>
-              {siblings.map((s) => (
-                <li key={s.id}>
-                  <Link className="chip" href={localePath(locale, `/principles/${s.slug}`)}>
-                    {names.principleName(s.name)}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link className="chip" style={{ borderColor: 'var(--color-ink)', color: 'var(--color-ink)' }} href={`${homeHref}#creed`}>
-                  {site('principle.all')}
-                </Link>
-              </li>
-            </ul>
-          </section>
-        )}
+        <CreedIndex library={library} current={slug} title={site('explorer.indexTitle')} />
       </div>
     </article>
   );

@@ -2,9 +2,10 @@ import 'server-only';
 import { cache } from 'react';
 import { fetchPillarsFromMongo, idToDate, idToString, type AggregatedPillar } from './mongo';
 import { pillarSlug, principleSlug } from './slugs';
+import { readSnapshot } from './snapshot';
 import type { Creed, Pillar, Principle } from './types';
 
-export type { Creed, Pillar, Principle, Reflection, LocalizedText } from './types';
+export type { ContentSource, Creed, Pillar, Principle, Reflection, LocalizedText } from './types';
 
 /**
  * Normalizes the aggregation result into the view model. Order is kept exactly
@@ -38,30 +39,54 @@ export function toCreed(aggregated: AggregatedPillar[], status: Creed['status'])
 
 const isBuildPhase = () => process.env.NEXT_PHASE === 'phase-production-build';
 
-let buildResult: Promise<Creed> | null = null;
+function hasContent(creed: Creed): boolean {
+  return creed.pillars.some((pillar) => pillar.principles.length > 0);
+}
 
+/**
+ * Content source order:
+ *   1. MongoDB (the single source of truth), read-only.
+ *   2. The static snapshot exported from MongoDB (`content/creed-snapshot.json`)
+ *      when MongoDB is unreachable, errors, or returns nothing.
+ *   3. Neither: pages render an informative state. Nothing is ever invented.
+ * This never throws, so builds and revalidations always succeed.
+ */
 async function loadCreed(): Promise<Creed> {
   const databaseUrl = process.env.DATABASE_URL;
+  let reason: string;
+
   if (!databaseUrl) {
-    console.error('[creed] DATABASE_URL is not set: rendering without MongoDB content.');
-    return { pillars: [], status: 'unavailable' };
-  }
-  try {
-    return toCreed(await fetchPillarsFromMongo(databaseUrl), 'ok');
-  } catch (error) {
-    const err = error as Error;
-    console.error('[creed] Error fetching data from MongoDB:', { message: err.message, name: err.name });
-    if (isBuildPhase()) {
-      // Same as the previous site: the build still succeeds and pages render
-      // their shell. Hourly revalidation fills the content in once MongoDB is
-      // reachable again.
-      return { pillars: [], status: 'unavailable' };
+    reason = 'DATABASE_URL is not set';
+  } else {
+    try {
+      const creed = toCreed(await fetchPillarsFromMongo(databaseUrl), 'mongodb');
+      if (hasContent(creed)) return creed;
+      reason = 'MongoDB answered but returned no pillars or principles';
+    } catch (error) {
+      const err = error as Error;
+      reason = `MongoDB request failed (${err.name}: ${err.message})`;
     }
-    // At runtime (revalidation), rethrow so Next keeps serving the last good
-    // page instead of replacing it with an empty one.
-    throw error;
   }
+
+  const snapshot = readSnapshot();
+  if (snapshot) {
+    const creed = toCreed(snapshot.pillars, 'snapshot');
+    if (hasContent(creed)) {
+      console.warn(
+        `[creed] FALLBACK ACTIVE: ${reason}. Serving the static snapshot exported on ${snapshot.generatedAt}.`,
+      );
+      return creed;
+    }
+  }
+
+  console.error(
+    `[creed] CONTENT UNAVAILABLE: ${reason}, and no static snapshot has been generated yet ` +
+      '(run "npm run snapshot"). Pages render without the reflections.',
+  );
+  return { pillars: [], status: 'unavailable' };
 }
+
+let buildResult: Promise<Creed> | null = null;
 
 /**
  * One MongoDB round-trip per build worker (many pages share it), and one per

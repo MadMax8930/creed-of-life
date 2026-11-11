@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { locales, type AppLocale } from '@/i18n/routing';
-import { AUTHOR, COFFEE_URL, LANGUAGE_NAMES, LINKTREE_URL, localePath, mailtoHref } from '@/lib/site';
+import { AUTHOR, COFFEE_URL, CONTACT_HREF, LANGUAGE_NAMES, LINKTREE_URL, localePath } from '@/lib/site';
 import TornEdge from './TornEdge';
 
 export default async function SiteFooter({ locale }: { locale: AppLocale }) {
@@ -16,11 +16,11 @@ export default async function SiteFooter({ locale }: { locale: AppLocale }) {
         <div className="footer__grid">
           <section aria-labelledby="footer-contact">
             <p className="note">{t('contactLabel')}</p>
-            <h2 id="footer-contact" className="footer__heading">
+            <h2 id="footer-contact" className="footer__small-heading">
               {t('contactHeading')}
             </h2>
             <p className="footer__text">{t('contactText')}</p>
-            <a className="button" href={mailtoHref(t('emailSubject'), t('emailBody'))}>
+            <a className="button" href={CONTACT_HREF}>
               <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true">
                 <path d="M1 1h16v12H1z M1 1l8 6.5L17 1" fill="none" stroke="currentColor" strokeWidth="1.6" />
               </svg>

@@ -40,8 +40,14 @@ export interface Pillar {
   principles: Principle[];
 }
 
+/** Where the content of this render came from. */
+export type ContentSource = 'mongodb' | 'snapshot' | 'unavailable';
+
 export interface Creed {
   pillars: Pillar[];
-  /** 'unavailable' when MongoDB could not be reached (pages still render). */
-  status: 'ok' | 'unavailable';
+  /**
+   * 'mongodb': fresh from the database. 'snapshot': MongoDB failed, the static
+   * export is being served. 'unavailable': neither source could be read.
+   */
+  status: ContentSource;
 }

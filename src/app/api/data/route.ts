@@ -1,10 +1,30 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { fetchPillarsFromMongo } from '@/lib/content/mongo';
+import { readSnapshot } from '@/lib/content/snapshot';
 import type { DbData, Pillar } from '@/types/mongo';
 
-// Same contract as the previous `src/pages/api/data.ts`:
-// GET /api/data?locale=xx -> { pillars } (all translations included), 500 on error.
+// Same contract as the original `src/pages/api/data.ts`:
+// GET /api/data?locale=xx -> { pillars } with every translation. Read-only.
+// MongoDB answers when it can; if it cannot, the static snapshot (the same
+// shape, exported from this very endpoint) is served instead of an error.
 export const dynamic = 'force-dynamic';
+
+function respond(pillars: Pillar[], source: 'mongodb' | 'snapshot') {
+  const body: DbData = { pillars };
+  return NextResponse.json(body, { headers: { 'X-Content-Source': source } });
+}
+
+function fallback(reason: string) {
+  const snapshot = readSnapshot();
+  if (!snapshot) {
+    console.error(`[creed] /api/data: ${reason}, and no static snapshot is available.`);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+  console.warn(
+    `[creed] FALLBACK ACTIVE on /api/data: ${reason}. Serving the static snapshot exported on ${snapshot.generatedAt}.`,
+  );
+  return respond(snapshot.pillars as unknown as Pillar[], 'snapshot');
+}
 
 export async function GET(request: NextRequest) {
   const locale = request.nextUrl.searchParams.get('locale') ?? 'en';
@@ -13,17 +33,14 @@ export async function GET(request: NextRequest) {
   }
 
   const databaseUrl = process.env.DATABASE_URL;
-  if (!databaseUrl) {
-    console.error('Error fetching data: DATABASE_URL is not set');
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-  }
+  if (!databaseUrl) return fallback('DATABASE_URL is not set');
 
   try {
     const pillars = (await fetchPillarsFromMongo(databaseUrl)) as unknown as Pillar[];
-    const body: DbData = { pillars };
-    return NextResponse.json(body);
+    if (pillars.length === 0) return fallback('MongoDB answered but returned no pillars');
+    return respond(pillars, 'mongodb');
   } catch (error) {
-    console.error('Error fetching data:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    const err = error as Error;
+    return fallback(`MongoDB request failed (${err.name}: ${err.message})`);
   }
 }

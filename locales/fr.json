@@ -46,7 +46,9 @@
          "close": "Fermer le menu",
          "primary": "Navigation principale",
          "language": "Langue",
-         "languageLabel": "Choisir une langue"
+         "languageLabel": "Choisir une langue",
+         "search": "Rechercher",
+         "saved": "Enregistrées"
       },
       "home": {
          "metaDescription": "Le Credo de la Vie est un guide pratique de développement personnel : neuf principes de confiance, de discipline et d’adaptabilité pour une vie pleine de sens.",
@@ -54,11 +56,9 @@
          "heroCta": "Lire le credo",
          "heroImageAlt": "Statue antique en noir et blanc, déchirée en bandes comme du papier",
          "manifestoLabel": "Manifeste",
-         "creedLabel": "Le Credo",
          "creedHeading": "Trois piliers. Neuf principes.",
-         "startHere": "Par où commencer",
-         "startHereText": "Lisez les principes dans l’ordre, ou ouvrez celui qui vous parle aujourd’hui.",
-         "closingLabel": "Pour conclure"
+         "closingLabel": "Pour conclure",
+         "creedIntro": "Choisissez un pilier, puis l’un de ses principes, et lisez."
       },
       "pillar": {
          "label": "Pilier {numeral}",
@@ -66,33 +66,68 @@
       },
       "principle": {
          "home": "Accueil",
-         "kicker": "Pilier {numeral}",
          "number": "Principe {number} sur {total}",
          "readingTime": "{minutes} min de lecture",
          "reflections": "{count, plural, one {# réflexion} other {# réflexions}}",
          "contents": "Dans ce principe",
          "previous": "Précédent",
          "next": "Suivant",
-         "alsoIn": "Aussi dans {pillar}",
          "all": "Tous les principes",
          "fallbackNotice": "Pas encore traduit. Affiché en anglais.",
          "metaTitle": "{principle} : {pillar}",
          "metaDescriptionFallback": "{principle}, un principe du pilier {pillar} du Credo de la Vie : des réflexions pratiques pour une croissance personnelle durable.",
          "breadcrumb": "Fil d’Ariane"
       },
+      "explorer": {
+         "pillars": "Piliers",
+         "principlesOf": "Principes du pilier {pillar}",
+         "openPage": "Ouvrir ce principe sur sa propre page",
+         "empty": "Aucune réflexion n’a encore été publiée pour ce principe.",
+         "unavailableTitle": "Les réflexions ne peuvent pas être affichées pour le moment",
+         "unavailableText": "Les réflexions n’ont pas pu être chargées pour le moment. Revenez dans un instant.",
+         "indexTitle": "Le credo en entier"
+      },
+      "daily": {
+         "label": "Pensée du jour",
+         "title": "Une idée à garder en tête aujourd’hui",
+         "cta": "Lire la réflexion complète"
+      },
+      "saved": {
+         "save": "Enregistrer cette réflexion",
+         "title": "Réflexions enregistrées",
+         "intro": "Les réflexions que vous avez marquées, conservées uniquement dans ce navigateur. Sans compte, rien n’est envoyé.",
+         "loading": "Chargement de vos réflexions enregistrées",
+         "empty": "Rien d’enregistré pour l’instant. Utilisez le signet à côté d’une réflexion pour la retrouver ici.",
+         "browse": "Explorer le credo",
+         "error": "Vos réflexions enregistrées n’ont pas pu être chargées. Vérifiez votre connexion et réessayez.",
+         "missing": "Réflexions enregistrées qui ne font plus partie du credo : {count}",
+         "clearMissing": "Les retirer de cette liste",
+         "remove": "Retirer",
+         "readInContext": "Lire dans son contexte"
+      },
+      "search": {
+         "open": "Rechercher",
+         "title": "Rechercher dans le credo",
+         "placeholder": "Rechercher un pilier, un principe ou une réflexion",
+         "close": "Fermer",
+         "hint": "Saisissez un mot ou une expression, ou allez directement à un principe.",
+         "noResults": "Aucun résultat pour « {query} ». Essayez un autre mot.",
+         "count": "Résultats : {count}",
+         "loading": "Chargement du credo",
+         "error": "La recherche n’a pas pu charger le credo. Vérifiez votre connexion et réessayez.",
+         "retry": "Réessayer"
+      },
       "footer": {
          "contactLabel": "Contact",
          "contactHeading": "Échangeons",
          "contactText": "Demandes professionnelles et autres, collaborations, ou une idée que ce guide vous a inspirée.",
          "contactCta": "Me contacter",
-         "emailSubject": "CreedOfLife - Demande générale",
-         "emailBody": "Bonjour Max,\n\nJ’ai découvert le Credo de la Vie et je vous écris au sujet de :\n\n",
          "supportLabel": "Soutenir",
          "supportText": "Si ce guide vous a plu, vous pouvez le soutenir.",
          "coffeeCta": "Offrez-moi un café",
-         "followLabel": "Ailleurs",
+         "followLabel": "L’auteur",
          "followText": "Vidéos, voyages et tout ce que je crée.",
-         "followCta": "Me retrouver sur Linktree",
+         "followCta": "En savoir plus sur l’auteur",
          "readIn": "Lire en",
          "rights": "Tous droits réservés.",
          "newTab": "s’ouvre dans un nouvel onglet",

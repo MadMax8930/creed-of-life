@@ -1,10 +1,12 @@
 import 'server-only';
 import { MongoClient, ObjectId } from 'mongodb';
+import pipeline from './pipeline.json';
 import type { Translations } from './types';
 
 /**
- * Shape returned by the aggregation below (same pipeline as the previous
- * `src/pages/index.tsx` and `src/pages/api/data.ts`).
+ * Shape returned by the aggregation (same pipeline as the original
+ * `src/pages/index.tsx` and `src/pages/api/data.ts`). The static snapshot in
+ * `content/creed-snapshot.json` stores exactly this shape, with ids as strings.
  */
 export interface AggregatedPillar {
   _id: unknown;
@@ -38,53 +40,18 @@ export function idToDate(id: unknown): string | null {
 }
 
 /**
- * Read-only. Uses the existing DATABASE_URL, the database name from its path,
+ * READ-ONLY. Uses the existing DATABASE_URL, the database name from its path,
  * the existing `pillars`, `branches` and `contents` collections, and the exact
- * aggregation pipeline the site already ran in production, so ordering and
- * shape stay identical.
+ * aggregation pipeline the site already ran in production (`pipeline.json`,
+ * shared with the snapshot export script), so ordering and shape stay identical.
+ * Nothing in this project writes to MongoDB.
  */
 export async function fetchPillarsFromMongo(databaseUrl: string): Promise<AggregatedPillar[]> {
   const client = await MongoClient.connect(databaseUrl);
   try {
     const dbName = new URL(databaseUrl).pathname.substring(1);
     const db = client.db(dbName);
-
-    return await db
-      .collection('pillars')
-      .aggregate<AggregatedPillar>([
-        {
-          $lookup: {
-            from: 'branches',
-            localField: 'branches',
-            foreignField: '_id',
-            as: 'branches',
-          },
-        },
-        {
-          $unwind: {
-            path: '$branches',
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $lookup: {
-            from: 'contents',
-            localField: 'branches.contentItems',
-            foreignField: '_id',
-            as: 'branches.contentItems',
-          },
-        },
-        {
-          $group: {
-            _id: '$_id',
-            name: { $first: '$name' },
-            order: { $first: '$order' },
-            branches: { $push: '$branches' },
-          },
-        },
-        { $sort: { order: 1 } },
-      ])
-      .toArray();
+    return await db.collection('pillars').aggregate<AggregatedPillar>(pipeline).toArray();
   } finally {
     await client.close();
   }

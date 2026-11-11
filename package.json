@@ -1,12 +1,14 @@
 {
   "name": "creed-of-life",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "private": true,
   "engines": {
     "node": "22.x"
   },
   "scripts": {
     "dev": "next dev",
+    "snapshot": "node scripts/snapshot-content.mjs",
+    "prebuild": "node scripts/snapshot-content.mjs --optional",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",

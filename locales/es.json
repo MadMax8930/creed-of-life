@@ -46,7 +46,9 @@
          "close": "Cerrar menú",
          "primary": "Navegación principal",
          "language": "Idioma",
-         "languageLabel": "Elegir idioma"
+         "languageLabel": "Elegir idioma",
+         "search": "Buscar",
+         "saved": "Guardadas"
       },
       "home": {
          "metaDescription": "El Credo de la Vida es una guía práctica de crecimiento personal: nueve principios de confianza, disciplina y adaptabilidad para una vida con propósito.",
@@ -54,11 +56,9 @@
          "heroCta": "Leer el credo",
          "heroImageAlt": "Estatua clásica en blanco y negro, rasgada en tiras como papel",
          "manifestoLabel": "Manifiesto",
-         "creedLabel": "El Credo",
          "creedHeading": "Tres pilares. Nueve principios.",
-         "startHere": "Por dónde empezar",
-         "startHereText": "Lee los principios en orden, o abre el que te hable hoy.",
-         "closingLabel": "Para cerrar"
+         "closingLabel": "Para cerrar",
+         "creedIntro": "Elige un pilar, luego uno de sus principios, y lee."
       },
       "pillar": {
          "label": "Pilar {numeral}",
@@ -66,33 +66,68 @@
       },
       "principle": {
          "home": "Inicio",
-         "kicker": "Pilar {numeral}",
          "number": "Principio {number} de {total}",
          "readingTime": "{minutes} min de lectura",
          "reflections": "{count, plural, one {# reflexión} other {# reflexiones}}",
          "contents": "En este principio",
          "previous": "Anterior",
          "next": "Siguiente",
-         "alsoIn": "También en {pillar}",
          "all": "Todos los principios",
          "fallbackNotice": "Aún sin traducir. Se muestra en inglés.",
          "metaTitle": "{principle}: {pillar}",
          "metaDescriptionFallback": "{principle}, un principio de {pillar} en el Credo de la Vida: reflexiones prácticas para un crecimiento personal sostenible.",
          "breadcrumb": "Ruta de navegación"
       },
+      "explorer": {
+         "pillars": "Pilares",
+         "principlesOf": "Principios de {pillar}",
+         "openPage": "Abrir este principio en su propia página",
+         "empty": "Aún no se han publicado reflexiones para este principio.",
+         "unavailableTitle": "Las reflexiones no se pueden mostrar en este momento",
+         "unavailableText": "Las reflexiones no se han podido cargar en este momento. Vuelve en un rato.",
+         "indexTitle": "El credo completo"
+      },
+      "daily": {
+         "label": "Reinicio diario",
+         "title": "Una idea para recordar hoy",
+         "cta": "Leer la reflexión completa"
+      },
+      "saved": {
+         "save": "Guardar esta reflexión",
+         "title": "Reflexiones guardadas",
+         "intro": "Las reflexiones que marcaste, guardadas solo en este navegador. Sin cuenta, sin enviar nada.",
+         "loading": "Cargando tus reflexiones guardadas",
+         "empty": "Aún no has guardado nada. Usa el marcador junto a cualquier reflexión para tenerla aquí.",
+         "browse": "Explorar el credo",
+         "error": "No se han podido cargar tus reflexiones guardadas. Comprueba tu conexión e inténtalo de nuevo.",
+         "missing": "Reflexiones guardadas que ya no forman parte del credo: {count}",
+         "clearMissing": "Quitarlas de esta lista",
+         "remove": "Quitar",
+         "readInContext": "Leer en contexto"
+      },
+      "search": {
+         "open": "Buscar",
+         "title": "Buscar en el credo",
+         "placeholder": "Busca pilares, principios y reflexiones",
+         "close": "Cerrar",
+         "hint": "Escribe una palabra o una frase, o ve directamente a un principio.",
+         "noResults": "Sin resultados para «{query}». Prueba con otra palabra.",
+         "count": "Resultados: {count}",
+         "loading": "Cargando el credo",
+         "error": "La búsqueda no ha podido cargar el credo. Comprueba tu conexión e inténtalo de nuevo.",
+         "retry": "Reintentar"
+      },
       "footer": {
          "contactLabel": "Contacto",
          "contactHeading": "Conectemos",
          "contactText": "Consultas profesionales y de otro tipo, colaboraciones, o una idea que esta guía te inspiró.",
          "contactCta": "Escríbeme",
-         "emailSubject": "CreedOfLife - Consulta general",
-         "emailBody": "Hola Max,\n\nDescubrí el Credo de la Vida y quería escribirte sobre:\n\n",
          "supportLabel": "Apoyar",
          "supportText": "Si te gustó esta guía, puedes apoyarla.",
          "coffeeCta": "Invítame a un café",
-         "followLabel": "En otros sitios",
+         "followLabel": "El autor",
          "followText": "Vídeos, viajes y todo lo demás que creo.",
-         "followCta": "Encuéntrame en Linktree",
+         "followCta": "Más sobre el autor",
          "readIn": "Leer en",
          "rights": "Todos los derechos reservados.",
          "newTab": "se abre en una pestaña nueva",

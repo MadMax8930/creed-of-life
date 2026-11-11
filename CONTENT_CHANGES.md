@@ -32,3 +32,36 @@ principle pages, the footer, the 404 page and meta descriptions.
 - **Contact email**: subject `CreedOfLife - General Enquiry` (localized) and a short prefilled body.
 - **Home meta description**: adapted from the existing `<meta name="description">`.
 - Spanish and Thai strings were written by Claude and should get a native read, Thai especially.
+
+## Phase 2
+
+**The 27 passages are untouched.** They come from MongoDB (or the snapshot
+exported from it) and are rendered exactly as stored, including their original
+punctuation. Nothing was rewritten, shortened or corrected.
+
+Observations on the stored content, left as they are (edit them in MongoDB if you
+want them changed):
+
+- 77 em-dashes across the passages (all languages).
+- 9 spaced hyphens used as dashes, for example "simply trying - reinforces".
+- Two English texts end with a line break (Learning Mindset #3, Emotional
+  Balance #1). Invisible on the page.
+
+New and changed UI strings, all under `siteJSON` in each locale file:
+
+| Group | What |
+| --- | --- |
+| `nav.search`, `nav.saved` | Header tools |
+| `home.creedIntro` | "Choose a pillar, pick one of its principles, and read." |
+| `explorer.*` | Explorer labels, empty and unavailable states, "The whole creed" |
+| `daily.*` | "Daily Reset", "One thought to remember today", "Read the full reflection" |
+| `saved.*` | Saved Reflections page, bookmark label, empty, error and missing states |
+| `search.*` | Search dialog, hints, no-results and error messages |
+| `footer.followLabel`, `footer.followCta` | "The author", "More about the author" (Linktree) |
+
+Removed: `footer.emailSubject`, `footer.emailBody` (the contact link is now the
+plain address `enjoyoway@gmail.com`), and three strings of the old static index.
+
+"Daily Reset" is localized as: Pensée du jour (fr), Reinicio diario (es),
+Мысль дня (ru), ทบทวนประจำวัน (th). Spanish, Russian and Thai strings were written
+by Claude and deserve a native read, Thai especially.

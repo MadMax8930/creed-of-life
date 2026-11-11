@@ -46,7 +46,9 @@
          "close": "Close menu",
          "primary": "Main navigation",
          "language": "Language",
-         "languageLabel": "Choose a language"
+         "languageLabel": "Choose a language",
+         "search": "Search",
+         "saved": "Saved"
       },
       "home": {
          "metaDescription": "Creed of Life is a practical guide to personal growth: nine principles of confidence, discipline and adaptability for a life of purpose, meaning and transformation.",
@@ -54,11 +56,9 @@
          "heroCta": "Read the creed",
          "heroImageAlt": "Classical marble statue in black and white, torn into strips like paper",
          "manifestoLabel": "Manifesto",
-         "creedLabel": "The Creed",
          "creedHeading": "Three pillars. Nine principles.",
-         "startHere": "Start here",
-         "startHereText": "Read the principles in order, or open the one that speaks to you today.",
-         "closingLabel": "In closing"
+         "closingLabel": "In closing",
+         "creedIntro": "Choose a pillar, pick one of its principles, and read."
       },
       "pillar": {
          "label": "Pillar {numeral}",
@@ -66,33 +66,68 @@
       },
       "principle": {
          "home": "Home",
-         "kicker": "Pillar {numeral}",
          "number": "Principle {number} of {total}",
          "readingTime": "{minutes} min read",
          "reflections": "{count, plural, one {# reflection} other {# reflections}}",
          "contents": "In this principle",
          "previous": "Previous",
          "next": "Next",
-         "alsoIn": "Also in {pillar}",
          "all": "All principles",
          "fallbackNotice": "Not yet translated. Shown in English.",
          "metaTitle": "{principle}: {pillar}",
          "metaDescriptionFallback": "{principle}, a principle of {pillar} in Creed of Life: practical reflections for sustainable personal growth.",
          "breadcrumb": "Breadcrumb"
       },
+      "explorer": {
+         "pillars": "Pillars",
+         "principlesOf": "Principles of {pillar}",
+         "openPage": "Open this principle on its own page",
+         "empty": "No reflections have been published for this principle yet.",
+         "unavailableTitle": "The reflections cannot be shown right now",
+         "unavailableText": "The written reflections could not be loaded just now. Please come back in a little while.",
+         "indexTitle": "The whole creed"
+      },
+      "daily": {
+         "label": "Daily Reset",
+         "title": "One thought to remember today",
+         "cta": "Read the full reflection"
+      },
+      "saved": {
+         "save": "Save this reflection",
+         "title": "Saved reflections",
+         "intro": "The reflections you bookmarked, kept in this browser only. No account, nothing sent anywhere.",
+         "loading": "Loading your saved reflections",
+         "empty": "Nothing saved yet. Use the bookmark next to any reflection to keep it here.",
+         "browse": "Explore the creed",
+         "error": "Your saved reflections could not be loaded. Check your connection and try again.",
+         "missing": "Saved reflections that are no longer part of the creed: {count}",
+         "clearMissing": "Remove them from this list",
+         "remove": "Remove",
+         "readInContext": "Read in context"
+      },
+      "search": {
+         "open": "Search",
+         "title": "Search the creed",
+         "placeholder": "Search pillars, principles and reflections",
+         "close": "Close",
+         "hint": "Type a word or a phrase, or go straight to a principle.",
+         "noResults": "No results for “{query}”. Try another word.",
+         "count": "Results: {count}",
+         "loading": "Loading the creed",
+         "error": "Search could not load the creed. Check your connection and try again.",
+         "retry": "Try again"
+      },
       "footer": {
          "contactLabel": "Contact",
          "contactHeading": "Let's connect",
          "contactText": "Business and other enquiries, collaborations, or a thought this guide sparked.",
          "contactCta": "Get in touch",
-         "emailSubject": "CreedOfLife - General Enquiry",
-         "emailBody": "Hi Max,\n\nI found Creed of Life and wanted to get in touch about:\n\n",
          "supportLabel": "Support",
          "supportText": "If you enjoyed this guide, consider supporting it.",
          "coffeeCta": "Buy me a coffee",
-         "followLabel": "Elsewhere",
+         "followLabel": "The author",
          "followText": "Videos, travel and everything else I make.",
-         "followCta": "Find me on Linktree",
+         "followCta": "More about the author",
          "readIn": "Read in",
          "rights": "All rights reserved.",
          "newTab": "opens in a new tab",

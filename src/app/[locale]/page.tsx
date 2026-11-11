@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import CreedExplorer from '@/components/CreedExplorer';
+import DailyReset from '@/components/DailyReset';
 import JsonLd from '@/components/JsonLd';
 import TornEdge from '@/components/TornEdge';
 import statue from '@/assets/images/statue-torn.jpg';
 import { isAppLocale, type AppLocale } from '@/i18n/routing';
-import { getCreed } from '@/lib/content';
-import { toParagraphs } from '@/lib/content/localize';
-import { getNameTranslators } from '@/lib/labels';
-import { pillarVisual } from '@/lib/pillar-visuals';
+import { pickDaily, utcDay } from '@/lib/content/daily';
+import { getLibrary } from '@/lib/content/library';
+import { leadExcerpt, toParagraphs } from '@/lib/content/localize';
 import { localizedAlternates, openGraphLocales } from '@/lib/seo';
-import { absoluteUrl, AUTHOR, LINKTREE_URL, localePath, roman, SITE_URL } from '@/lib/site';
+import { absoluteUrl, AUTHOR, LINKTREE_URL, SITE_URL } from '@/lib/site';
 
 // Content edited in MongoDB shows up within the hour, no redeploy needed.
 export const revalidate = 3600;
@@ -56,15 +56,18 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const locale = raw as AppLocale;
   setRequestLocale(locale);
 
-  const [ui, site, creed, names] = await Promise.all([
+  const [ui, site, library] = await Promise.all([
     getTranslations({ locale, namespace: 'uiJSON' }),
     getTranslations({ locale, namespace: 'siteJSON' }),
-    getCreed(),
-    getNameTranslators(locale),
+    getLibrary(locale),
   ]);
 
   const [titleText, edition] = splitEdition(ui('mainTitle'));
-  const firstPrinciple = creed.pillars[0]?.principles[0];
+  const hasContent = library.pillars.length > 0;
+
+  // Daily Reset: today's existing passage (UTC day), chosen deterministically.
+  const day = utcDay();
+  const daily = pickDaily(library, day);
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -123,6 +126,15 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
         </figure>
       </section>
 
+      {daily && (
+        <DailyReset
+          library={library}
+          day={day}
+          excerpt={leadExcerpt(daily.passage.text, locale)}
+          labels={{ label: site('daily.label'), title: site('daily.title'), cta: site('daily.cta') }}
+        />
+      )}
+
       <section id="manifesto" className="wrap section" aria-labelledby="manifesto-title">
         <div className="split">
           <h2 id="manifesto-title" className="section-title">
@@ -132,80 +144,38 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
         </div>
       </section>
 
-      {creed.pillars.length > 0 && (
-        <section id="creed" className="wrap section" style={{ paddingTop: 0 }} aria-labelledby="creed-title">
-          <div className="creed__head">
-            <div>
-              <p className="note">{site('home.eyebrow')}</p>
-              <h2 id="creed-title" className="section-title" style={{ marginTop: '0.5rem' }}>
-                {site('home.creedHeading')}
-              </h2>
-            </div>
-            {firstPrinciple && (
-              <div>
-                <p className="note" style={{ marginBottom: '0.75rem', maxWidth: '30ch' }}>
-                  {site('home.startHereText')}
-                </p>
-                <Link className="button button--ghost" href={localePath(locale, `/principles/${firstPrinciple.slug}`)}>
-                  {site('home.startHere')}: {names.principleName(firstPrinciple.name)}
-                </Link>
-              </div>
-            )}
+      <section id="creed" className="wrap section creed" aria-labelledby="creed-title">
+        <div className="creed__head">
+          <div>
+            <p className="note">{site('home.eyebrow')}</p>
+            <h2 id="creed-title" className="section-title">
+              {site('home.creedHeading')}
+            </h2>
           </div>
+          {hasContent && <p className="note creed__intro">{site('home.creedIntro')}</p>}
+        </div>
 
-          {creed.pillars.map((pillar) => {
-            const visual = pillarVisual(pillar.slug, pillar.position);
-            const pillarName = names.pillarName(pillar.name);
-            const headingId = `pillar-${pillar.slug}`;
-            return (
-              <article
-                key={pillar.id}
-                id={pillar.slug}
-                className="pillar"
-                style={{ '--pillar': visual.color } as React.CSSProperties}
-                aria-labelledby={headingId}
-              >
-                <figure className="pillar__media">
-                  <Image
-                    src={visual.image}
-                    alt=""
-                    quality={70}
-                    sizes="(min-width: 60rem) 36vw, 100vw"
-                    placeholder="blur"
-                  />
-                  <span className="pillar__numeral" aria-hidden="true">
-                    {roman(pillar.position)}
-                  </span>
-                </figure>
-                <div>
-                  <p className="note">{site('pillar.label', { numeral: roman(pillar.position) })}</p>
-                  <h3 id={headingId} className="pillar__name">
-                    {pillarName}
-                  </h3>
-                  <ol className="principles">
-                    {pillar.principles.map((principle) => (
-                      <li key={principle.id}>
-                        <Link
-                          className="principle-link"
-                          href={localePath(locale, `/principles/${principle.slug}`)}
-                        >
-                          <span className="principle-link__n" aria-hidden="true">
-                            {principle.number + 1}
-                          </span>
-                          <span className="principle-link__name">{names.principleName(principle.name)}</span>
-                          <span className="principle-link__meta">
-                            {site('principle.reflections', { count: principle.reflections.length })}
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </article>
-            );
-          })}
-        </section>
-      )}
+        {hasContent ? (
+          <CreedExplorer
+            library={library}
+            labels={{
+              pillars: site('explorer.pillars'),
+              principlesOf: site.raw('explorer.principlesOf') as string,
+              openPage: site('explorer.openPage'),
+              previous: site('principle.previous'),
+              next: site('principle.next'),
+              save: site('saved.save'),
+              fallbackNotice: site('principle.fallbackNotice'),
+              empty: site('explorer.empty'),
+            }}
+          />
+        ) : (
+          <div className="state" role="status">
+            <h3 className="state__title">{site('explorer.unavailableTitle')}</h3>
+            <p>{site('explorer.unavailableText')}</p>
+          </div>
+        )}
+      </section>
 
       <section className="on-ink closing" aria-labelledby="closing-title">
         <TornEdge seed={19} fill="var(--color-plaster)" fiber="var(--color-marble)" />

@@ -1,0 +1,33 @@
+[
+  {
+    "$lookup": {
+      "from": "branches",
+      "localField": "branches",
+      "foreignField": "_id",
+      "as": "branches"
+    }
+  },
+  {
+    "$unwind": {
+      "path": "$branches",
+      "preserveNullAndEmptyArrays": true
+    }
+  },
+  {
+    "$lookup": {
+      "from": "contents",
+      "localField": "branches.contentItems",
+      "foreignField": "_id",
+      "as": "branches.contentItems"
+    }
+  },
+  {
+    "$group": {
+      "_id": "$_id",
+      "name": { "$first": "$name" },
+      "order": { "$first": "$order" },
+      "branches": { "$push": "$branches" }
+    }
+  },
+  { "$sort": { "order": 1 } }
+]

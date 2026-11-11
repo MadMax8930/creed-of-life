@@ -4,6 +4,8 @@ import { locales, type AppLocale } from '@/i18n/routing';
 import { localePath } from '@/lib/site';
 import LanguagePicker from './LanguagePicker';
 import MobileMenu from './MobileMenu';
+import SavedLink from './SavedLink';
+import SearchDialog from './SearchDialog';
 
 export default async function SiteHeader({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: 'siteJSON' });
@@ -17,6 +19,7 @@ export default async function SiteHeader({ locale }: { locale: AppLocale }) {
     { href: anchor('manifesto'), label: t('nav.manifesto') },
     { href: '#contact', label: t('nav.contact') },
   ];
+  const savedHref = localePath(locale, '/saved');
 
   const names = { en: 'English', es: 'Spanish', fr: 'French', ru: 'Russian', th: 'Thai' } as const;
   const spokenNames = Object.fromEntries(locales.map((l) => [l, languages(names[l])])) as Record<AppLocale, string>;
@@ -35,10 +38,28 @@ export default async function SiteHeader({ locale }: { locale: AppLocale }) {
           ))}
         </nav>
         <div className="header-tools">
+          <SearchDialog
+            locale={locale}
+            labels={{
+              open: t('search.open'),
+              title: t('search.title'),
+              placeholder: t('search.placeholder'),
+              close: t('search.close'),
+              hint: t('search.hint'),
+              noResults: t.raw('search.noResults') as string,
+              count: t.raw('search.count') as string,
+              loading: t('search.loading'),
+              error: t('search.error'),
+              retry: t('search.retry'),
+              unavailable: t('explorer.unavailableText'),
+              indexTitle: t('explorer.indexTitle'),
+            }}
+          />
+          <SavedLink href={savedHref} label={t('nav.saved')} />
           <LanguagePicker locale={locale} label={t('nav.languageLabel')} spokenNames={spokenNames} />
           <MobileMenu
             labels={{ menu: t('nav.menu'), close: t('nav.close'), primary: t('nav.primary') }}
-            links={links}
+            links={[...links, { href: savedHref, label: t('saved.title') }]}
           />
         </div>
       </div>
