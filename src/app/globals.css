@@ -356,6 +356,54 @@
       display: none;
     }
   }
+  /* Back to top: a quiet square in the corner, under the header and the menu. */
+  .to-top {
+    position: fixed;
+    z-index: 38;
+    right: max(0.75rem, env(safe-area-inset-right));
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    color: var(--color-plaster);
+    background: var(--color-ink);
+    border: 0;
+    /* A light edge keeps it readable over the dark footer too. */
+    box-shadow: 0 0 0 2px var(--color-plaster);
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .to-top[data-shown] {
+    visibility: visible;
+    opacity: 1;
+  }
+  .to-top:hover {
+    background: var(--color-graphite);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .to-top {
+      transform: translateY(0.5rem);
+      transition:
+        opacity 200ms ease,
+        transform 200ms ease,
+        visibility 0s linear 200ms;
+    }
+    .to-top[data-shown] {
+      transform: none;
+      transition:
+        opacity 200ms ease,
+        transform 200ms ease;
+    }
+  }
+  @media print {
+    .to-top {
+      display: none;
+    }
+  }
   .menu-sheet {
     position: fixed;
     inset: var(--header-h) 0 0 0;

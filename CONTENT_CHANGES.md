@@ -71,3 +71,7 @@ Phase 2.2: `footer.coffeeCta` now reads "Buy my father a coffee" and
 helped shape this project."). The destination is unchanged. English wording is
 Max's; the es, fr, ru and th versions were translated by Claude and deserve a
 native read.
+
+Phase 2.3: one new UI string, `nav.toTop` (the label of the back-to-top button):
+Back to top, Volver arriba, Retour en haut, Наверх, กลับขึ้นด้านบน. No existing
+string changed.

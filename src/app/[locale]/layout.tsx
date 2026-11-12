@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Analytics from '@/components/Analytics';
+import BackToTop from '@/components/BackToTop';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import { isAppLocale, locales } from '@/i18n/routing';
@@ -54,6 +55,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
           {children}
         </main>
         <SiteFooter locale={locale} />
+        <BackToTop label={t('nav.toTop')} />
         <Analytics />
       </body>
     </html>

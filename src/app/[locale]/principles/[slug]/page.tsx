@@ -8,6 +8,7 @@ import TornEdge from '@/components/TornEdge';
 import { isAppLocale, type AppLocale } from '@/i18n/routing';
 import CreedIndex from '@/components/CreedIndex';
 import Passage from '@/components/Passage';
+import PrincipleSwitcher from '@/components/PrincipleSwitcher';
 import PrincipleEmblem from '@/components/PrincipleEmblem';
 import { getAllPrinciples, getPrinciple } from '@/lib/content';
 import { getLibrary } from '@/lib/content/library';
@@ -178,27 +179,11 @@ export default async function PrinciplePage({ params }: PageProps<'/[locale]/pri
 
       <div className="wrap">
         {/* The same principle switcher as the home explorer, as real links. */}
-        <nav
-          className="pcards pcards--page"
-          aria-label={site('explorer.principlesOf', { pillar: pillar.name })}
-        >
-          {pillar.principles.map((item) => (
-            <Link
-              key={item.slug}
-              className="pcard"
-              href={item.href}
-              aria-current={item.slug === slug ? 'page' : undefined}
-            >
-              <PrincipleEmblem slug={item.slug} className="pcard__emblem" />
-              <span className="pcard__text">
-                <span className="pcard__n" aria-hidden="true">
-                  {item.number}
-                </span>
-                <span className="pcard__name">{item.name}</span>
-              </span>
-            </Link>
-          ))}
-        </nav>
+        <PrincipleSwitcher
+          label={site('explorer.principlesOf', { pillar: pillar.name })}
+          current={slug}
+          items={pillar.principles.map(({ slug, href, number, name }) => ({ slug, href, number, name }))}
+        />
 
         <div className="reading reading--page">
           {principle.passages.length > 1 ? (
