@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'reac
 import type { Library, LibraryPillar, LibraryPrinciple } from '@/lib/content/library-types';
 import { pillarVisual } from '@/lib/pillar-visuals';
 import Passage from './Passage';
+import PrincipleEmblem from './PrincipleEmblem';
 
 export interface ExplorerLabels {
   /** Name of the pillar switcher, e.g. "Pillars". */
@@ -189,7 +190,7 @@ export default function CreedExplorer({ library, labels }: { library: Library; l
       </div>
 
       <div id="creed-principles" className="explorer__panel" role="tabpanel" aria-labelledby={pillar.slug}>
-        <div className="ptabs" role="tablist" aria-label={labels.principlesOf.replace('{pillar}', pillar.name)}>
+        <div className="pcards" role="tablist" aria-label={labels.principlesOf.replace('{pillar}', pillar.name)}>
           {pillar.principles.map((item, index) => {
             const selected = item.slug === principle?.slug;
             return (
@@ -198,7 +199,7 @@ export default function CreedExplorer({ library, labels }: { library: Library; l
                 id={`tab-${item.slug}`}
                 type="button"
                 role="tab"
-                className="ptab"
+                className="pcard"
                 aria-selected={selected}
                 aria-controls="creed-reading"
                 tabIndex={selected ? 0 : -1}
@@ -212,10 +213,13 @@ export default function CreedExplorer({ library, labels }: { library: Library; l
                   document.getElementById(`tab-${to.slug}`)?.focus();
                 }}
               >
-                <span className="ptab__n" aria-hidden="true">
-                  {item.number}
+                <PrincipleEmblem slug={item.slug} className="pcard__emblem" />
+                <span className="pcard__text">
+                  <span className="pcard__n" aria-hidden="true">
+                    {item.number}
+                  </span>
+                  <span className="pcard__name">{item.name}</span>
                 </span>
-                <span className="ptab__name">{item.name}</span>
               </button>
             );
           })}
@@ -230,6 +234,7 @@ export default function CreedExplorer({ library, labels }: { library: Library; l
             aria-labelledby={`tab-${principle.slug}`}
           >
             <aside className="reading__context">
+              <PrincipleEmblem slug={principle.slug} className="reading__emblem" />
               <p className="reading__pillar">
                 {pillar.label}: {pillar.name}
               </p>

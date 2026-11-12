@@ -6,12 +6,15 @@ import { pickDaily, utcDay } from '@/lib/content/daily';
 import { passageHref, type Library } from '@/lib/content/library-types';
 import { leadExcerpt } from '@/lib/content/localize';
 import { pillarVisual } from '@/lib/pillar-visuals';
+import PrincipleEmblem from './PrincipleEmblem';
+import SaveButton from './SaveButton';
 import TornEdge from './TornEdge';
 
 export interface DailyLabels {
   label: string;
   title: string;
   cta: string;
+  save: string;
 }
 
 interface DailyResetProps {
@@ -66,7 +69,10 @@ export default function DailyReset({ library, day, excerpt, labels }: DailyReset
         </div>
         <div className="daily__thought">
           <p className="daily__source">
-            {principle.name}, {pillar.name}
+            <PrincipleEmblem slug={principle.slug} className="daily__emblem" />
+            <span>
+              {principle.name}, {pillar.name}
+            </span>
           </p>
           <h3 className="daily__heading" lang={passage.titleLang !== library.locale ? passage.titleLang : undefined}>
             {passage.title}
@@ -74,9 +80,12 @@ export default function DailyReset({ library, day, excerpt, labels }: DailyReset
           <p className="daily__excerpt" lang={foreign}>
             {lead}
           </p>
-          <Link className="button" href={passageHref(pick)}>
-            {labels.cta}
-          </Link>
+          <div className="daily__actions">
+            <Link className="button" href={passageHref(pick)}>
+              {labels.cta}
+            </Link>
+            <SaveButton id={passage.id} label={labels.save} />
+          </div>
         </div>
       </div>
       <TornEdge seed={29} fill="var(--color-plaster)" direction="up" />

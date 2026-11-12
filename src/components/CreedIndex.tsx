@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Library } from '@/lib/content/library-types';
 import { pillarVisual } from '@/lib/pillar-visuals';
+import PrincipleEmblem from './PrincipleEmblem';
 
 interface CreedIndexProps {
   library: Library;
@@ -42,9 +43,7 @@ export default function CreedIndex({ library, title, current, headingLevel = 2, 
                     aria-current={principle.slug === current ? 'page' : undefined}
                     onClick={onNavigate}
                   >
-                    <span className="index__n" aria-hidden="true">
-                      {principle.number}
-                    </span>
+                    <PrincipleEmblem slug={principle.slug} className="index__emblem" />
                     {principle.name}
                   </Link>
                 </li>
