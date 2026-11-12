@@ -57,6 +57,17 @@ Every render picks its source in this order (`src/lib/content/index.ts`):
 3. **Neither:** pages render an informative "cannot be shown right now" state.
    Nothing is ever invented.
 
+Reads are kept cheap, with no extra infrastructure:
+
+- One MongoDB client per server process, reused by every read
+  (`src/lib/content/mongo.ts`), instead of a new connection per render.
+- The result of a read is shared in memory for one minute
+  (`src/lib/content/index.ts`), so a revalidation of ~50 routes, or `next dev`
+  rendering every click, makes one query instead of dozens. Pages still
+  revalidate hourly, so an edit in MongoDB appears on the same schedule.
+- Search and Saved Reflections work on content already in the browser: shared by
+  the home explorer, or fetched once per visit while the page is idle.
+
 The snapshot is the `/api/data` response (`{ pillars: [...] }`, ids as strings)
 plus a `meta` block (export time, counts, translation coverage). It contains no
 credentials. Visitors get the same experience from either source; the home page

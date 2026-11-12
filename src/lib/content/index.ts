@@ -88,16 +88,32 @@ async function loadCreed(): Promise<Creed> {
 
 let buildResult: Promise<Creed> | null = null;
 
+/*
+ * At runtime the result is kept in memory for one minute. Regenerating the
+ * pages after the hourly revalidation renders about fifty routes (home and
+ * principle pages in five languages, plus the search data); they now share one
+ * MongoDB read instead of making one each, and `next dev`, which renders every
+ * request from scratch, stops querying the database on every click.
+ * One minute is small next to the one hour revalidation, so content edited in
+ * MongoDB still appears on the same schedule. A fallback result is kept for the
+ * same minute, then MongoDB is tried again.
+ */
+const FRESH_MS = 60_000;
+let recent: { at: number; creed: Promise<Creed> } | null = null;
+
 /**
- * One MongoDB round-trip per build worker (many pages share it), and one per
- * request at runtime. React `cache` dedupes calls within a single render.
+ * One MongoDB round-trip per build worker (many pages share it), and at most
+ * one per minute per server process at runtime. React `cache` dedupes calls
+ * within a single render.
  */
 export const getCreed = cache(async (): Promise<Creed> => {
   if (isBuildPhase()) {
     buildResult ??= loadCreed();
     return buildResult;
   }
-  return loadCreed();
+  const now = Date.now();
+  if (!recent || now - recent.at > FRESH_MS) recent = { at: now, creed: loadCreed() };
+  return recent.creed;
 });
 
 export async function getAllPrinciples(): Promise<Principle[]> {

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import { buildIndex, MIN_QUERY, search, type Segment } from '@/lib/content/search';
 import { pillarVisual } from '@/lib/pillar-visuals';
-import { useLibrary } from '@/lib/useLibrary';
+import { preloadLibrary, useLibrary } from '@/lib/useLibrary';
 import CreedIndex from './CreedIndex';
 
 export interface SearchLabels {
@@ -40,7 +40,9 @@ function isTyping(target: EventTarget | null) {
 
 /**
  * Search the creed: pillars, principles, passage headings and the words inside
- * the passages. The library is fetched the first time the dialog opens.
+ * the passages, entirely in the browser. The content is fetched once, while
+ * the page is idle (or shared by the home explorer), so the dialog opens with
+ * everything already in memory and typing never waits on the network.
  */
 export default function SearchDialog({ locale, labels }: { locale: string; labels: SearchLabels }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -65,6 +67,19 @@ export default function SearchDialog({ locale, labels }: { locale: string; label
   function close() {
     dialog.current?.close();
   }
+
+  // Get the content ready before the first search, without competing with the
+  // page load. Visitors who asked their browser to save data fetch on open.
+  useEffect(() => {
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (connection?.saveData) return;
+    if (typeof window.requestIdleCallback === 'function') {
+      const id = window.requestIdleCallback(() => preloadLibrary(locale), { timeout: 4000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = window.setTimeout(() => preloadLibrary(locale), 1500);
+    return () => window.clearTimeout(id);
+  }, [locale]);
 
   // "/" or Ctrl/Cmd+K opens search from anywhere on the page.
   useEffect(() => {
@@ -98,7 +113,11 @@ export default function SearchDialog({ locale, labels }: { locale: string; label
 
   return (
     <>
-      <button type="button" className="tool" aria-haspopup="dialog" aria-label={labels.open} onClick={show}>
+      <button type="button" className="tool" aria-haspopup="dialog" aria-label={labels.open}
+        onClick={show}
+        onPointerEnter={() => preloadLibrary(locale)}
+        onFocus={() => preloadLibrary(locale)}
+      >
         <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
           <circle cx="7.5" cy="7.5" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
           <path d="M11.8 11.8L16.5 16.5" stroke="currentColor" strokeWidth="1.8" />

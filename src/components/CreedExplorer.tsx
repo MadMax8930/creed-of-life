@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import type { Library, LibraryPillar, LibraryPrinciple } from '@/lib/content/library-types';
 import { pillarVisual } from '@/lib/pillar-visuals';
+import { primeLibrary } from '@/lib/useLibrary';
 import Passage from './Passage';
 import PrincipleEmblem from './PrincipleEmblem';
 
@@ -103,6 +104,9 @@ export default function CreedExplorer({ library, labels }: { library: Library; l
   const position = order.findIndex((entry) => entry.principle.slug === principle?.slug);
   const previous = position > 0 ? order[position - 1] : undefined;
   const next = position >= 0 && position < order.length - 1 ? order[position + 1] : undefined;
+
+  // Search and Saved Reflections reuse this content instead of fetching it.
+  useEffect(() => primeLibrary(library), [library]);
 
   // Opening "/#resilience" directly: bring the explorer into view once.
   useEffect(() => {

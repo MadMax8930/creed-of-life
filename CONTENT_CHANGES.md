@@ -65,3 +65,9 @@ plain address `enjoyoway@gmail.com`), and three strings of the old static index.
 "Daily Reset" is localized as: Pensée du jour (fr), Reinicio diario (es),
 Мысль дня (ru), ทบทวนประจำวัน (th). Spanish, Russian and Thai strings were written
 by Claude and deserve a native read, Thai especially.
+
+Phase 2.2: `footer.coffeeCta` now reads "Buy my father a coffee" and
+`footer.coffeeNote` is new ("A thank-you to my father, whose early guidance
+helped shape this project."). The destination is unchanged. English wording is
+Max's; the es, fr, ru and th versions were translated by Claude and deserve a
+native read.

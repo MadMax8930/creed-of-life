@@ -485,6 +485,12 @@
   .hero__copy .button {
     margin-top: 0.5rem;
   }
+  /* Desktop: the motto reads as one line where the column has room for it. */
+  @media (min-width: 60rem) {
+    .hero__motto {
+      max-width: none;
+    }
+  }
   @media (min-width: 60rem) {
     .hero__grid {
       grid-template-columns: minmax(0, 13fr) minmax(0, 11fr);
@@ -599,6 +605,23 @@
       position: sticky;
       top: calc(var(--header-h) + 2rem);
       align-self: start;
+    }
+  }
+  /* Desktop: the manifesto title stays on one line in every language. Narrow
+     desktops scale the word to its column; wider ones give it a slightly wider
+     column at close to the original size (the pillar legend needs the room the
+     text column would otherwise lose on narrow screens). */
+  @media (min-width: 60rem) {
+    #manifesto .section-title {
+      font-size: 4vw;
+    }
+  }
+  @media (min-width: 75rem) {
+    #manifesto .split {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+    #manifesto .section-title {
+      font-size: clamp(2rem, 4.8vw, 4.25rem);
     }
   }
   .section-title {
@@ -753,6 +776,44 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 3rem;
     }
+    /* The three columns share one set of rows (label, heading, text, button,
+       aside), so the buttons start on the same line whatever sits above them. */
+    @supports (grid-template-rows: subgrid) {
+      .footer__grid {
+        grid-template-rows: repeat(5, auto);
+        row-gap: 0;
+      }
+      .footer__grid > section {
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 5;
+        justify-items: start;
+      }
+      .footer__grid > section > * {
+        grid-column: 1;
+      }
+      .footer__grid > section > .note {
+        grid-row: 1;
+        margin: 0;
+      }
+      .footer__grid > section > .footer__small-heading {
+        grid-row: 2;
+      }
+      .footer__grid > section > .footer__text {
+        grid-row: 3;
+      }
+      /* Columns without a text paragraph let their sentence use that room. */
+      .footer__grid > section > .footer__small-heading:not(:has(+ .footer__text)) {
+        grid-row: 2 / 4;
+        margin-bottom: 1.5rem;
+      }
+      .footer__grid > section > .button {
+        grid-row: 4;
+      }
+      .footer__grid > section > .footer__aside {
+        grid-row: 5;
+      }
+    }
   }
   .footer__small-heading {
     font-family: var(--font-display);
@@ -763,6 +824,14 @@
   .footer__text {
     margin: 0 0 1.5rem;
     max-width: 34ch;
+  }
+  .footer__aside {
+    margin: 0.875rem 0 0;
+    max-width: 34ch;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    font-style: italic;
+    color: var(--color-stone);
   }
   .footer__base {
     margin-top: clamp(2.5rem, 5vw, 3.5rem);
@@ -1203,7 +1272,7 @@
   }
   @media (prefers-reduced-motion: no-preference) {
     .explorer .reading {
-      animation: settle 260ms ease both;
+      animation: settle 150ms ease-out both;
     }
     @keyframes settle {
       from {

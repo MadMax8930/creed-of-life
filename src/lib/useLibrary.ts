@@ -21,7 +21,20 @@ function load(locale: string): Promise<Library> {
 }
 
 /**
- * Loads the localized library once per visit, only when a feature needs it
+ * A page that already holds the library (the home explorer) shares it, so
+ * search and Saved Reflections need no request at all.
+ */
+export function primeLibrary(library: Library) {
+  if (!cache.has(library.locale)) cache.set(library.locale, Promise.resolve(library));
+}
+
+/** Fetches the library ahead of use. Failures are silent: `useLibrary` retries. */
+export function preloadLibrary(locale: string) {
+  load(locale).catch(() => {});
+}
+
+/**
+ * Loads the localized library once per visit for the features that need it
  * (search, Saved Reflections). Pages never wait on it.
  */
 export function useLibrary(locale: string, enabled: boolean) {

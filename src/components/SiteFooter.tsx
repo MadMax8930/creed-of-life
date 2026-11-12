@@ -43,6 +43,7 @@ export default async function SiteFooter({ locale }: { locale: AppLocale }) {
               >
                 {t('coffeeCta')}
               </a>
+              <p className="footer__aside">{t('coffeeNote')}</p>
             </section>
           )}
 
